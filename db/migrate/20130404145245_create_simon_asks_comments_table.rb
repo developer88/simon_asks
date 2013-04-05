@@ -11,7 +11,7 @@ class CreateSimonAsksCommentsTable < ActiveRecord::Migration
       t.integer :depth
       t.timestamps
     end
-    add_index :comments, [:owner_id, :owner_type]
-    add_index :comments, :user_id
+    add_index :simon_asks_comments, [:owner_id, :owner_type]
+    add_index :simon_asks_comments, :user_id
   end
 end
