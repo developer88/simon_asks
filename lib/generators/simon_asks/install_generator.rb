@@ -14,7 +14,7 @@ module SimonAsks
       def install_migrations
         puts "Copying over SimonAsks migrations..."
         Dir.chdir(Rails.root) do
-          `rake forem:install:migrations`
+          `rake simon_asks:install:migrations`
         end
       end
 
@@ -29,19 +29,19 @@ module SimonAsks
                               ask("What is the current_user helper called in your app? [current_user]").presence ||
                               :current_user
 
-        puts "Defining simon_asks_user method inside ApplicationController..."
+#        puts "Defining simon_asks_user method inside ApplicationController..."
 
-        simon_asks_user_method = %Q{
-  def simon_asks_user
-    #{current_user_helper}
-  end
-  helper_method :simon_asks_user
+#        simon_asks_user_method = %Q{
+#  def simon_asks_user
+#    #{current_user_helper}
+#  end
+#  helper_method :simon_asks_user
+#
+#}
 
-}
-
-        inject_into_file("#{Rails.root}/app/controllers/application_controller.rb",
-                         simon_asks_user_method,
-                         :after => "ActionController::Base\n")
+ #       inject_into_file("#{Rails.root}/app/controllers/application_controller.rb",
+  #                       simon_asks_user_method,
+  #                       :after => "ActionController::Base\n")
 
       end
 
