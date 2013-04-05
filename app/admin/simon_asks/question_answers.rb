@@ -1,3 +1,5 @@
-ActiveAdmin.register QuestionAnswer do  
+ActiveAdmin.register QuestionAnswer do 
+
+  menu :parent => "Q&A" 
     
 end
