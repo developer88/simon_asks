@@ -24,10 +24,10 @@ module SimonAsks
                       'User'
       end
 
-      def determine_current_user_helper
-        current_user_helper = options["current_user_helper"].presence ||
-                              ask("What is the current_user helper called in your app? [current_user]").presence ||
-                              :current_user
+     # def determine_current_user_helper
+    #    current_user_helper = options["current_user_helper"].presence ||
+     #                         ask("What is the current_user helper called in your app? [current_user]").presence ||
+    ##                          :current_user
 
 #        puts "Defining simon_asks_user method inside ApplicationController..."
 
@@ -43,7 +43,7 @@ module SimonAsks
   #                       simon_asks_user_method,
   #                       :after => "ActionController::Base\n")
 
-      end
+     # end
 
       def add_simon_asks_initializer
         path = "#{Rails.root}/config/initializers/simon_asks.rb"
@@ -55,30 +55,30 @@ module SimonAsks
         end
       end
 
-      def run_migrations
-        unless options["no-migrate"]
-          puts "Running rake db:migrate"
-          `rake db:migrate`
-        end
-      end
+     # def run_migrations
+       # unless options["no-migrate"]
+       #   puts "Running rake db:migrate"
+       #   `rake db:migrate`
+       # end
+     # end
 
-      def seed_database
+     # def seed_database
        # load "#{Rails.root}/config/initializers/simon_asks.rb"
        # unless options["no-migrate"]
        #   puts "Creating default forum and topic"
        #   Forem::Engine.load_seed
        # end
-      end
+      #end
 
-      def mount_engine
-        puts "Mounting SimonAsks::Engine at \"/qa\" in config/routes.rb..."
-        insert_into_file("#{Rails.root}/config/routes.rb", :after => /routes.draw.do\n/) do
-          %Q{
-  mount SimonAsks::Engine => "/qa"
+      #def mount_engine
+       # puts "Mounting SimonAsks::Engine at \"/qa\" in config/routes.rb..."
+       # insert_into_file("#{Rails.root}/config/routes.rb", :after => /routes.draw.do\n/) do
+     #     %Q{
+ # mount SimonAsks::Engine => "/qa"
 
-}
-        end
-      end
+#}
+     #   end
+     # end
 
       def finished
         output = "\n\n" + ("*" * 53)
