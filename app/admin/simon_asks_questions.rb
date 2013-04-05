@@ -1,4 +1,4 @@
-ActiveAdmin.register Comment do  
+ActiveAdmin.register SimonAsksQuestion do  
 
   menu :parent => I18n.t("simon_asks.active_admin.q_n_a")
     

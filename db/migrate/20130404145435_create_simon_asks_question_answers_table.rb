@@ -1,6 +1,6 @@
-class CreateQaQuestionAnswersTable < ActiveRecord::Migration
+class CreateSimonAsksQuestionAnswersTable < ActiveRecord::Migration
   def change
-    create_table :qa_question_answers do |t| 
+    create_table :simon_asks_question_answers do |t| 
       t.integer :user_id 
       t.text    :content
       t.integer :question_id

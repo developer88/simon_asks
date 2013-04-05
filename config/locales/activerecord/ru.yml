@@ -1,0 +1,21 @@
+---
+ru:
+  activerecord:
+    attributes:
+      simon_asks:
+        question:
+
+    models:
+      simon_asks:
+        question:
+          one: Вопрос
+          other: Вопросы
+          answer:
+            one: Ответ
+            other: Ответы
+        comment:
+          one: Комментарий
+          other: Комментарии
+        rate:
+          one: Рейтинг
+          other: Рейтинги

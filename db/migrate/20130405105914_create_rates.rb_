@@ -16,3 +16,5 @@ class CreateRates < ActiveRecord::Migration
     drop_table :rates
   end
 end
+
+#simon_asks_
