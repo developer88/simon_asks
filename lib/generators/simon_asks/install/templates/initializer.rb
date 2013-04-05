@@ -1,0 +1,1 @@
+SimonAsks.user_class = "<%= user_class %>"

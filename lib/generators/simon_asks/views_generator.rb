@@ -4,7 +4,7 @@ require 'rails/generators'
 module SimonAsks
   module Generators
     class ViewsGenerator < Rails::Generators::Base #:nodoc:
-      source_root File.expand_path("../../../../app/views/forem", __FILE__)
+      source_root File.expand_path("../../../../app/views/simon_asks", __FILE__)
       desc "Used to copy simon_asks' views to your application's views."
 
       def copy_views
