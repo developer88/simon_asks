@@ -1,4 +1,4 @@
-require 'validators/file_size_validator'
+require 'validators/simon_asks/file_size_validator'
 
 module SimonAsks
   class Question < ActiveRecord::Base
@@ -9,7 +9,7 @@ module SimonAsks
 
     pg_search_scope :search_by_title_and_content, against: [:title, :content], using: { tsearch: { prefix: true} }
 
-    belongs_to :user
+    belongs_to :user, :class_name => SimonAsks.user_class
     has_many :answers, class_name: 'QuestionAnswer', dependent: :destroy
     has_many :comments, as: 'owner', dependent: :destroy
 

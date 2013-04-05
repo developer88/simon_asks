@@ -8,7 +8,7 @@ module SimonAsks
     attr_accessible :state, :user_id, as: 'admin'
 
     belongs_to :owner, polymorphic: true, counter_cache: true
-    belongs_to :user
+    belongs_to :user, :class_name => SimonAsks.user_class
 
     before_create do
       self.state = 'pending'

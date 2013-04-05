@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Andrey Eremin, Anton Volkov"]
   s.email       = ["dsoft88@gmail.com, сhoixer@gmail.com"]
   s.homepage    = "https://github.com/developer88/simon_asks"
-  s.summary     = "TODO: Summary of SimonAsks."
-  s.description = "TODO: Description of SimonAsks."
+  s.summary     = "Lightweight Q&A gem for Rails."
+  s.description = "Lightweight gem inspired by Stackoverflow for Ruby on Rails Applications."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
@@ -21,7 +21,8 @@ Gem::Specification.new do |s|
   s.add_dependency "acts-as-taggable-on", "~> 2.3.3"
   s.add_dependency "acts_as_votable", "~> 0.5.0"
 
-  # s.add_dependency "jquery-rails"
+  s.add_dependency "carrierwave", "~> 0.8.0"
+  s.add_dependency "fog", "~> 1.9.0"
 
   s.add_development_dependency "sqlite3"
 end

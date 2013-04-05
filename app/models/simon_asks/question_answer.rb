@@ -2,7 +2,7 @@ module SimonAsks
   class QuestionAnswer < ActiveRecord::Base
     #
     # Relations
-    belongs_to :user
+    belongs_to :user, :class_name => SimonAsks.user_class
     belongs_to :question, counter_cache: :answers_count
     has_many :comments, as: 'owner'
 
