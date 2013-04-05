@@ -62,6 +62,14 @@ module SimonAsks
         end
       end
 
+
+      def setup_active_admin_directory
+        puts "Creating ActiveAdmin resources"
+        template 'questions.rb', 'app/admin/simon_asks_questions.rb'
+        template 'question_answers.rb', 'app/admin/simon_asks_question_answers.rb'
+        template 'comments.rb', 'app/admin/simon_asks_comments.rb'
+      end
+
      # def seed_database
        # load "#{Rails.root}/config/initializers/simon_asks.rb"
        # unless options["no-migrate"]
