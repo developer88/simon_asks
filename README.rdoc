@@ -2,3 +2,8 @@ simon-ask
 =========
 
 Q&amp;A Gem for Rails
+
+
+[Working in progress]
+
+rails g simon_asks:install

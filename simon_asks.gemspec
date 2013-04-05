@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "auto_html", "~> 1.6.0"
 
-  s.add_dependency "active_admin", "~> 0.5.1"
+  s.add_dependency "activeadmin", "~> 0.5.1"
   
   # development
   s.add_development_dependency "sqlite3"
