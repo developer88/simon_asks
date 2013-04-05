@@ -55,12 +55,12 @@ module SimonAsks
         end
       end
 
-     # def run_migrations
-       # unless options["no-migrate"]
-       #   puts "Running rake db:migrate"
-       #   `rake db:migrate`
-       # end
-     # end
+      def run_migrations
+        unless options["no-migrate"]
+          puts "Running rake db:migrate"
+          `rake db:migrate`
+        end
+      end
 
      # def seed_database
        # load "#{Rails.root}/config/initializers/simon_asks.rb"
