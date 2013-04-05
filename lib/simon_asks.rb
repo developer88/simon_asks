@@ -1,3 +1,5 @@
+require 'acts_as_votable'
+require 'auto_html_for'
 require "simon_asks/engine"
 
 module SimonAsks
