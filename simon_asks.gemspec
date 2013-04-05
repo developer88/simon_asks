@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "acts-as-taggable-on", "~> 2.3.3"
   s.add_dependency "acts_as_votable", "~> 0.5.0"
-  s.add_dependency "awesome_nested_set", "~> 2.1.6"
+  s.add_dependency "awesome_nested_set", "~> 2.1.5"
 
   s.add_dependency "carrierwave", "~> 0.8.0"
   s.add_dependency "fog", "~> 1.9.0"
