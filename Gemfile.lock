@@ -12,6 +12,8 @@ PATH
       devise (~> 2.2.3)
       fog (~> 1.9.0)
       mini_magick (~> 3.5.0)
+      pg (~> 0.14.1)
+      pg_search (~> 0.5.7)
       rails (~> 3.2.12)
 
 GEM
@@ -130,6 +132,10 @@ GEM
     net-ssh (2.6.6)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
+    pg (0.14.1)
+    pg_search (0.5.7)
+      activerecord (>= 3)
+      activesupport (>= 3)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
