@@ -1,5 +1,5 @@
 ActiveAdmin.register Question do  
 
-  menu :parent => "Q&A"
+  menu :parent => I18n.t("simon_asks.active_admin.q_n_a")
     
 end
