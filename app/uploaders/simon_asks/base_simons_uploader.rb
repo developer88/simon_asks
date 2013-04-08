@@ -1,5 +1,5 @@
 module SimonAsks
-  class BaseUploader < CarrierWave::Uploader::Base
+  class BaseSimonsUploader < CarrierWave::Uploader::Base
     before :store, :remember_cache_id
     before :cache, :remove_old_file_before_cache
     # after :store, :delete_tmp_dir
