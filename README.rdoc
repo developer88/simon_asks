@@ -7,5 +7,7 @@ Q&amp;A Gem for Rails
 [Working in progress]
 
 rails g simon_asks:install
+ rails g simon_asks:views
 
+ 
 will create votes table for gem acts_as_votable
