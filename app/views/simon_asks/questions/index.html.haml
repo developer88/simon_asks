@@ -1,0 +1,7 @@
+- if @question_of_day
+  = render 'questions/marked', question: @question_of_day
+.questions
+  - @questions.each do |question|
+    = render 'item', { question: question }
+.pagenavi
+  = paginate @questions
