@@ -62,7 +62,6 @@ module SimonAsks
         end
       end
 
-
       def setup_active_admin_directory
         puts "Creating ActiveAdmin resources"
         template 'questions.rb', 'app/admin/simon_asks_questions.rb'
@@ -78,15 +77,15 @@ module SimonAsks
        # end
       #end
 
-      #def mount_engine
-       # puts "Mounting SimonAsks::Engine at \"/qa\" in config/routes.rb..."
-       # insert_into_file("#{Rails.root}/config/routes.rb", :after => /routes.draw.do\n/) do
-     #     %Q{
- # mount SimonAsks::Engine => "/qa"
+      def mount_engine
+        puts "Mounting SimonAsks::Engine at \"/qa\" in config/routes.rb..."
+        insert_into_file("#{Rails.root}/config/routes.rb", :after => /routes.draw.do\n/) do
+          %Q{
+  mount SimonAsks::Engine => "/qa"
 
-#}
-     #   end
-     # end
+}
+        end
+      end
 
       def finished
         output = "\n\n" + ("*" * 53)

@@ -21,5 +21,3 @@ class CreateVotesTable < ActiveRecord::Migration
     drop_table :votes
   end
 end
-
-# simon_asks_
