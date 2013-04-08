@@ -33,5 +33,10 @@ module SimonAsks
     def only_children(user)
       self.class.where(parent_id: id).published(user)
     end
+
+    def self.statuses
+      STATES
+    end
+
   end
 end

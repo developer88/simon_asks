@@ -2,11 +2,11 @@
 # Based on: https://gist.github.com/795665
 
 class FileSizeValidator < ActiveModel::EachValidator
-  MESSAGES  = { :is => :wrong_size, :minimum => :size_too_small, :maximum => :size_too_big }.freeze
-  CHECKS    = { :is => :==, :minimum => :>=, :maximum => :<= }.freeze
+  ERROR_MESSAGES  = { :is => :wrong_size, :minimum => :size_too_small, :maximum => :size_too_big }.freeze
+  VALIDATIONS    = { :is => :==, :minimum => :>=, :maximum => :<= }.freeze
 
-  DEFAULT_TOKENIZER = lambda { |value| value.split(//) }
-  RESERVED_OPTIONS  = [:minimum, :maximum, :within, :is, :tokenizer, :too_short, :too_long]
+  DEFAULT_TOKENIZER_PROC = lambda { |value| value.split(//) }
+  RESERVED_ERROR_OPTIONS  = [:minimum, :maximum, :within, :is, :tokenizer, :too_short, :too_long]
 
   def initialize(options)
     if range = (options.delete(:in) || options.delete(:within))
@@ -19,7 +19,7 @@ class FileSizeValidator < ActiveModel::EachValidator
   end
 
   def check_validity!
-    keys = CHECKS.keys & options.keys
+    keys = VALIDATIONS.keys & options.keys
 
     if keys.empty?
       raise ArgumentError, 'Range unspecified. Specify the :within, :maximum, :minimum, or :is option.'
@@ -37,9 +37,9 @@ class FileSizeValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     raise(ArgumentError, "A CarrierWave::Uploader::Base object was expected") unless value.kind_of? CarrierWave::Uploader::Base
 
-    value = (options[:tokenizer] || DEFAULT_TOKENIZER).call(value) if value.kind_of?(String)
+    value = (options[:tokenizer] || DEFAULT_TOKENIZER_PROC).call(value) if value.kind_of?(String)
 
-    CHECKS.each do |key, validity_check|
+    VALIDATIONS.each do |key, validity_check|
       next unless check_value = options[key]
 
       value ||= [] if key == :maximum
@@ -47,13 +47,13 @@ class FileSizeValidator < ActiveModel::EachValidator
       value_size = value.size
       next if value_size.send(validity_check, check_value)
 
-      errors_options = options.except(*RESERVED_OPTIONS)
+      errors_options = options.except(*RESERVED_ERROR_OPTIONS)
       errors_options[:file_size] = help.number_to_human_size check_value
 
-      default_message = options[MESSAGES[key]]
+      default_message = options[ERROR_MESSAGES[key]]
       errors_options[:message] ||= default_message if default_message
 
-      record.errors.add(attribute, MESSAGES[key], errors_options)
+      record.errors.add(attribute, ERROR_MESSAGES[key], errors_options)
     end
   end
 

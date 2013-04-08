@@ -24,7 +24,8 @@ module SimonAsks
 
     validates :image, file_size: { maximum: 2.megabytes.to_i },
       if: lambda { |o| o.image_cache.blank? }
-    validates_presence_of :title, :content, :user, :tag_list
+    validates_presence_of :title, :content, :tag_list
+    #:user,
 
     default_scope includes([answers: :comments], :comments, :user).order('created_at DESC')
 
