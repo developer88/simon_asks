@@ -8,7 +8,7 @@ module SimonAsks
       desc "Used to copy simon_asks' views to your application's views."
 
       def copy_views
-        #view_directory :admin
+        view_directory :questions
         #view_directory :categories
         #view_directory :forums
         #view_directory :moderation

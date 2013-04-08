@@ -1,0 +1,11 @@
+= link_to question_upvote_path(question), remote: true do
+  - if current_user && current_user.voted_up_on?(question)
+    .arrow-up.green
+  - else
+    .arrow-up
+%span.vote-count= question.score
+= link_to question_downvote_path(question), remote: true do
+  - if current_user && current_user.voted_down_on?(question)
+    .arrow-down.green
+  - else
+    .arrow-down

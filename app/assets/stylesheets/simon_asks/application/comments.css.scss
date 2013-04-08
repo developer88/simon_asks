@@ -1,0 +1,56 @@
+// @import '_base.css.scss';
+
+.comments-list .item {
+  position: relative;
+  overflow: visible !important;
+  .edit {
+    background: image_url('application/pencil-ico.png') no-repeat left center;
+    padding-left: 20px;
+    text-decoration: none;
+    margin-right: 30px;
+    display: inline-block;
+  }
+  .edit span {
+    display: inline-block;
+    height: 15px;
+    border-bottom: 1px dashed  #44BA7A;
+    color: #44BA7A;
+  }
+  .edit:hover {
+    text-decoration: none;
+  }
+  .edit:hover span {
+    border-bottom: none;
+    color: #44BA7A;
+  }
+  .link span {
+    border-bottom: 1px dashed;
+  }
+  .link_str {
+    position: absolute;
+    z-index: 999;
+    right: 0;
+    top: 20px;
+    width: 280px;
+    text-align: center;
+    background: white;
+    border : 1px solid #ccc;
+    padding: 5px;
+    color: #444;
+   // @include round_corners;
+   // @include box_shadow(15px, -5px);
+  }
+  form {
+    width: 99%;
+    margin-bottom: 0;
+    .for-text {
+      width: 100%;
+    }
+    textarea {
+      width: 98%;
+    }
+  }
+  span.state {
+    float: right;
+  }
+}

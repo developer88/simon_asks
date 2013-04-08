@@ -1,0 +1,11 @@
+.content.title-row
+  %h2= t.questions.edit_question
+
+= form_for @question do |f|
+  .controls-row.big-margin.clearfix
+    .btn-wrap.silver.subject
+      .hint= f.label :image
+      = f.file_field :image
+      = f.hidden_field :image_cache
+  .controls-row.big-margin.clearfix
+    = f.submit t.questions.edit_question, class: 'button'
