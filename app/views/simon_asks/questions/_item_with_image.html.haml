@@ -1,0 +1,20 @@
+.question-item.with-image
+  .image= image_tag question.image.main
+  .stats-wrapper
+    .stats
+      .votes
+        %span.vote-count
+          %strong= question.score
+        .viewcount= t.questions.votes(question.score)
+      .answers
+        %span.answer-count
+          %strong= number_of_answers(question)
+        .viewcount= t.questions.answers(question.answers_count)
+  .summary
+    %h3= link_to question.title, question
+    %p= truncate(question.content, length: 300)
+    .meta
+      .views= t.questions.views(question.views_count)
+      .tags= t('questions.tags') + ': ' + show_tag_list(question)
+      .author= link_to question.user.login, question.user
+      .date= l question.updated_at, :full
