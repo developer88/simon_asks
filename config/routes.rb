@@ -1,4 +1,4 @@
-SimonAsks::Engine.routes.draw do
+SimonAsks::Engine.routes.draw do  
 
   get 'questions/tags/:tag', to: 'questions#index', as: :questions_tag
   resources :questions do
@@ -14,5 +14,7 @@ SimonAsks::Engine.routes.draw do
     resources :comments, controller: 'question_comments', only: [:create, :edit, :update, :destroy]
   end
   resources :comments, only: %w(create update), constraints: { format: 'js' }
+
+  root :to => "questions#index"
 
 end
