@@ -4,6 +4,7 @@ module SimonAsks
   class Ability
     include CanCan::Ability
 
+    # Thanks for Forem gem for the following methods
     class_attribute :abilities
     self.abilities = Set.new
 
@@ -19,44 +20,76 @@ module SimonAsks
       self.abilities.delete(ability)
     end
 
-    def initialize(user)
-      user ||= Forem.user_class.new
+    def initialize(user, params)
+      # define alias
+      alias_action :update, :destroy, :to => :modify
 
-      can :read, Forem::Category do |category|
-        user.can_read_forem_category?(category)
-      end
+      can [:read], SimonAsks::Question
+      #can [:read, :rate], Attachment do |att|
+      #  check_access_level(att.attachable, user, :access, :user)
+      #end
 
-      can :read, Forem::Topic do |topic|
-        user.can_read_forem_forum?(topic.forum) && user.can_read_forem_topic?(topic)
-      end
+      # if user
+      if user
 
-      if user.can_read_forem_forums?
-        can :read, Forem::Forum do |forum|
-          user.can_read_forem_category?(forum.category) && user.can_read_forem_forum?(forum)
+        # Comments
+        can [:create], SimonAsks::Comment do |c|
+          if c.owner
+            c.owner.respond_to?(:closed?) ? !c.owner.closed? : true
+          end
         end
+        can [:update], SimonAsks::Comment do |c|
+          c.user_id == user.id
+        end
+        can [:destroy], SimonAsks::Comment do |c|
+          c.user_id == user.id
+        end
+
+        #can :manage, Attachment do |a|
+        #  a.attachable.user == user
+        #end
+
+        # Questions
+        can [:create], SimonAsks::Question
+        can [:update], SimonAsks::Question do |q|
+          q.user_id == user.id
+        end
+
+        can [:upvote, :downvote], SimonAsks::Question do |q|
+          q.user_id != user.id
+        end
+
+        # Answers
+        can [:create], SimonAsks::QuestionAnswer
+        can [:update], SimonAsks::QuestionAnswer do |a|
+          a.user_id == user.id
+        end
+
+        can [:upvote, :downvote], SimonAsks::QuestionAnswer do |a|
+          a.user_id != user.id
+        end
+
+        # Answer comments
+        can [:create], :answer_comment
+        can [:destroy], :answer_comment do
+          SimonAsks::Comment.find(params[:id]).user_id == user.id
+        end
+
+        # question comments
+        can [:create], :question_comment
+        can [:destroy], :question_comment do
+          SimonAsks::Comment.find(params[:id]).user_id == user.id
+        end
+
+        #include any abilities registered by extensions, etc.
+        Ability.abilities.each do |clazz|
+          ability = clazz.send(:new, user)
+          @rules = rules + ability.send(:rules)
+        end
+
       end
 
-      can :create_topic, Forem::Forum do |forum|
-        can?(:read, forum) && user.can_create_forem_topics?(forum)
-      end
-
-      can :reply, Forem::Topic do |topic|
-        user.can_reply_to_forem_topic?(topic)
-      end
-
-      can :edit_post, Forem::Forum do |forum|
-        user.can_edit_forem_posts?(forum)
-      end
-
-      can :moderate, Forem::Forum do |forum|
-        user.can_moderate_forem_forum?(forum) || user.forem_admin?
-      end
-
-      #include any abilities registered by extensions, etc.
-      Ability.abilities.each do |clazz|
-        ability = clazz.send(:new, user)
-        @rules = rules + ability.send(:rules)
-      end
     end
+    
   end
 end
