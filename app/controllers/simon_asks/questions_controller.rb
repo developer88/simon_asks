@@ -1,5 +1,6 @@
 module SimonAsks
   class QuestionsController < SimonAsks::ApplicationController
+    #include SimonAsks::QuestionsHelper
 
     authorize_resource class: SimonAsks::Question
 
