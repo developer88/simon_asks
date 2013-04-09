@@ -9,7 +9,7 @@ module SimonAsks
     before_filter :merge_tags, only: [:update, :create]
 
     def index
-      @question_of_day = Question.find_by_marked(true)
+      @question_of_day = Question.all
       if params[:tag]
         @questions = Question.tagged_with(params[:tag]).page(params[:page])
       else
