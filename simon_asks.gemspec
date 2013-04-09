@@ -30,6 +30,10 @@ Gem::Specification.new do |s|
   s.add_dependency "mini_magick", "~> 3.5.0"
 
   s.add_dependency "auto_html", "~> 1.6.0"
+  s.add_dependency "kaminari", "~> 0.14.1"
+  s.add_dependency "haml", "~> 3.1.8"
+  s.add_dependency "haml-rails", "~> 0.4"
+  s.add_dependency "coffee-rails", "~> 3.2.2"
 
   s.add_dependency "activeadmin", "~> 0.5.1"
 
