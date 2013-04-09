@@ -1,0 +1,6 @@
+.question-admin
+  %h4= t.questions.admin.title
+  %ul
+    %li= link_to t.questions.admin.delete, question, :method => :delete, :confirm => "Вы уверены?"
+    %li= link_to t.questions.admin.set_image, question_edit_image_path(question)
+    %li= link_to t.questions.admin.mark, question_mark_path(question)

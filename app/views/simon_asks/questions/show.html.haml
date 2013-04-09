@@ -1,0 +1,57 @@
+.question
+  .question-header
+    %h1= @question.title
+  .mainbar
+    .question-wrapper
+      %table
+        %tr
+          %td.votecell
+            = render partial: 'questions/vote', locals: {question: @question}
+          %td.postcell
+            .text= @question.content_html
+            .meta
+              .lf
+                .tags
+                  = t.questions.tags + ': '
+                  = show_tag_list(@question)
+                - if can? :update, @question
+                  = link_to t.questions.edit, edit_question_path(@question)
+              .rf
+                .date= l @question.updated_at, :full
+                .author
+                  = link_to image_tag(user_avatar_url(@question.user, 'icon_30')), @question.user, title: user_name(@question.user)
+                  = link_to @question.user.login, @question.user
+      -# Comments
+      .comments
+        #question-comments-list.comments-list
+          = render partial: 'question_comments/comment', collection: @question.comments, locals: { question: @question }
+
+        - if user_signed_in?
+          = link_to t.questions.write_comment, ".question-wrapper .write-comment", 'data-comment-show' => "toggle"
+          #add_question_comment.loader= image_tag 'ajax-loader.gif'
+          #add_question_comment_block.write-comment{ style: 'display:none;' }
+            .new-comment= render partial: 'question_comments/form', locals: { question: @question }
+
+    -# Answers
+    .answers
+      .answer-header
+        %h3= t.questions.answers_with_num(@question.answers_count)
+      #answers-list
+        = render partial: 'question_answers/answer', collection: @question.answers
+
+      - if current_user and not @question.has_answer_by?(current_user)
+        #add_answer.loader= image_tag 'ajax-loader.gif'
+        #add_answer_block.new-answer
+          %h3= t.questions.your_answer
+          = render partial: 'question_answers/form', locals: { answer: @answer, question: @question }
+  .sidebar
+    -# Admin block
+    - if current_user && current_user.is?(:admin)
+      = render 'questions/admin', question: @question
+    - if @related_questions.any?
+      = render 'questions/related', questions: @related_questions
+
+:javascript
+  App.preload([
+    '#{asset_path('ajax-loader-mini.gif')}'
+  ]);

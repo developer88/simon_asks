@@ -1,0 +1,13 @@
+= form_for [question, Comment.new], remote: true do |f|
+  .controls-row.big-margin.clearfix
+    .btn-wrap.silver.subject
+      .hint= f.label :content
+      = f.text_area :content, id: "question-comment-textarea"
+  .controls-row.big-margin.clearfix
+    = f.submit t.questions.write_comment, class: 'button', id: 'question-comment-submit'
+
+:javascript
+  $('#question-comment-submit').click(function() {
+    $('#add_question_comment_block').hide('slow');
+    $('#add_question_comment.loader').show();
+  });

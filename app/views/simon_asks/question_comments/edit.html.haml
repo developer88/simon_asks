@@ -1,0 +1,11 @@
+.content.title-row
+  %h2= t.questions.edit_comment
+
+= form_for [@question, @comment] do |f|
+  .controls-row.big-margin.clearfix
+    .btn-wrap.silver.subject
+      .hint= f.label :content
+      = f.text_area :content
+  .controls-row.big-margin.clearfix
+    .btn-wrap.gray
+      = f.submit t.questions.edit_comment, class: 'btn green submit'
