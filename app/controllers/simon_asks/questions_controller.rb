@@ -1,7 +1,7 @@
 module SimonAsks
   class QuestionsController < SimonAsks::ApplicationController
 
-    authorize_resource
+    authorize_resource class: SimonAsks::Question
 
     before_filter :find_question_by_id, only: [:show, :edit, :update, :destroy]
     before_filter :find_question_by_question_id, only: [:mark, :edit_image, :upvote, :downvote]

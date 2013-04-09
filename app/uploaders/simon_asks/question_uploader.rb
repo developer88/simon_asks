@@ -1,5 +1,5 @@
 module SimonAsks
-  class QuestionUploader < SimonAsks::BaseSimonsUploader
+  class QuestionUploader < BaseSimonsUploader
     version :large do
       process resize_to_fill: [230, 170]
     end

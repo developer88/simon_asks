@@ -8,6 +8,7 @@ Q&amp;A Gem for Rails
 
 rails g simon_asks:install
  rails g simon_asks:views
+ rake simon_asks:install:migrations
 
  
 will create votes table for gem acts_as_votable

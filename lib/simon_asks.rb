@@ -3,6 +3,8 @@ require 'auto_html'
 require 'acts-as-taggable-on'
 require 'pg'
 require 'pg_search'
+require 'cancan'
+require 'carrierwave'
 
 require "simon_asks/engine"
 
