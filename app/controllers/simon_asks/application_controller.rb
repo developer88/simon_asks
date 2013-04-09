@@ -1,5 +1,5 @@
 module SimonAsks
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ApplicationController
 
     private
 

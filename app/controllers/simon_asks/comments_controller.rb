@@ -2,7 +2,7 @@ module SimonAsks
   class CommentsController < SimonAsks::ApplicationController
     respond_to :js
 
-    load_and_authorize_resource
+    load_and_authorize_resource class: SimonAsks::Comment
 
     def create
       @comment.user = current_user
