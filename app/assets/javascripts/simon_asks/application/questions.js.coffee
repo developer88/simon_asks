@@ -1,6 +1,6 @@
-window.App ||= {}
+window.SimonAsks ||= {}
 
-App.prepareCommentsLinks = (context) ->
+SimonAsks.prepareCommentsLinks = (context) ->
   context = ((if context is `undefined` then '' else context+' '))
 
   $(context + 'a[data-comment-show=toggle]').click (e) ->
@@ -11,4 +11,4 @@ App.prepareCommentsLinks = (context) ->
 
 
 $ ->
-  App.prepareCommentsLinks()
+  SimonAsks.prepareCommentsLinks()
