@@ -1,5 +1,24 @@
 ---
 en:
+  activerecord:
+    attributes:
+      simon_asks:
+        question:
+
+    models:
+      simon_asks:
+        question:
+          one: Question
+          other: Questions
+          answer:
+            one: Answer
+            other: Answers
+        comment:
+          one: Comment
+          other: Comments
+        rate:
+          one: Rating
+          other: Ratings
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
