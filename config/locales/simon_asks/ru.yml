@@ -3,3 +3,64 @@ ru:
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
+    question:
+      was:
+        created: Вопрос успешно сохранен
+        updated: Вопрос был успешно обновлен
+      tags:
+        politics: О политике
+        politics_value: политика
+        history: Об истории
+        history_value: история
+        life: О жизни
+        life_value: жизнь
+        culture: О культуре
+        culture_value: культура
+        religion: О религии
+        religion_value: религия
+        meal: О еде
+        meal_value: еда
+    questions:
+      title: 'Вопросы'
+      answers: !!pl
+        0: 'ответов'
+        1: 'ответ'
+        2: 'ответа'
+        n: 'ответов'
+      answers_with_num: !!pl
+        0: '%1 ответов'
+        1: '%1 ответ'
+        2: '%1 ответа'
+        n: '%1 ответов'
+      votes: !!pl
+        -2: 'голоса'
+        -1: 'голос'
+        0: 'голосов'
+        1: 'голос'
+        2: 'голоса'
+        n: 'голосов'
+      views: !!pl
+        0: '%1 просмотров'
+        1: '%1 просмотр'
+        2: '%1 просмотра'
+        n: '%1 просмотров'
+      tags: 'Темы'
+      find_global: 'Найди ответ!'
+      ask: 'Задать'
+      your_answer: 'Ваш ответ'
+      answer: 'Ответить'
+      edit: 'Редактировать'
+      edit_question: 'Редактировать вопрос'
+      delete: 'Удалить'
+      write_comment: 'Написать комментарий'
+      edit_comment: 'Редактировать комментарий'
+      question_of_the_day: 'Вопрос дня'
+      most_read: 'Самое читаемое'
+      related_questions: 'Похожие вопросы'
+      new_answer_hint: 'Ссылки на изображения или видео с youtube обрабатываются и отображаются.'
+
+      admin:
+        title: 'Администрирование'
+        delete: 'Удалить'
+        set_image: 'Добавить изображение'
+        mark: 'Отметить как вопрос дня'

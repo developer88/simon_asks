@@ -3,3 +3,64 @@ en:
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
+    question:
+      was:
+        created: Question was created
+        updated: Question was updated
+      tags:
+        politics: Politics
+        politics_value: politics
+        history: History
+        history_value: history
+        life: Life
+        life_value: life
+        culture: Culture
+        culture_value: culture
+        religion: Religion
+        religion_value: religion
+        meal: Meal
+        meal_value: meal
+    questions:   
+      title: 'Questions'
+      answers: !!pl
+        0: 'question'
+        1: 'question'
+        2: 'questions'
+        n: 'questions'
+      answers_with_num: !!pl
+        0: '%1 answer'
+        1: '%1 answer'
+        2: '%1 answers'
+        n: '%1 answers'
+      votes: !!pl
+        -2: 'vote'
+        -1: 'vote'
+        0: 'vote'
+        1: 'vote'
+        2: 'votes'
+        n: 'votes'
+      views: !!pl
+        0: '%1 views'
+        1: '%1 views'
+        2: '%1 views'
+        n: '%1 views'
+      tags: 'Tags'
+      find_global: 'Find an answer!'
+      ask: 'Ask'
+      your_answer: 'Your answer'
+      answer: 'Answer'
+      edit: 'Edit'
+      edit_question: 'Edit question'
+      delete: 'Remove'
+      write_comment: 'Comment'
+      edit_comment: 'Edit comment'
+      question_of_the_day: 'QUestion of the day'
+      most_read: 'Most readable'
+      related_questions: 'Similar questions'
+      new_answer_hint: 'Ссылки на изображения или видео с youtube обрабатываются и отображаются.'
+
+      admin:
+        title: 'Admin'
+        delete: 'Remove'
+        set_image: 'Add image'
+        mark: 'Mark as Question of the day'       
