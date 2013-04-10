@@ -41,28 +41,18 @@ en:
         meal_value: meal
     questions:   
       title: 'Questions'
-      answers: !!pl
-        0: 'question'
-        1: 'question'
-        2: 'questions'
-        n: 'questions'
-      answers_with_num: !!pl
-        0: '%1 answer'
-        1: '%1 answer'
-        2: '%1 answers'
-        n: '%1 answers'
-      votes: !!pl
-        -2: 'vote'
-        -1: 'vote'
-        0: 'vote'
-        1: 'vote'
-        2: 'votes'
-        n: 'votes'
-      views: !!pl
-        0: '%1 views'
-        1: '%1 views'
-        2: '%1 views'
-        n: '%1 views'
+      answers: 
+        one: 'question'
+        other: 'questions'
+      answers_with_num: 
+        one: '%1 answer'
+        other: '%1 answers'
+      votes: 
+        one: 'vote'
+        other: 'votes'
+      views: 
+        one: '%1 views'
+        other: '%1 views'
       tags: 'Tags'
       find_global: 'Find an answer!'
       ask: 'Ask'
