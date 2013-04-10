@@ -2,23 +2,39 @@
 en:
   activerecord:
     attributes:
-      simon_asks:
-        question:
+      simon_asks/question:
+        title: Title
+        content: Question
+        tag_list: Tags
+        user: User
+        image: Picture
+        created_at: Created at
+        updated_at: Updated at
+      simon_asks/question_answer:
+        content: Content
+        question: Question
+        user: User
+        created_at: Created at
+        comments_count: Comments count
+        updated_at: Updated at
+      simon_asks/comment:
+        created_at: Created at
+        updated_at: Updated at
+        state: State
+        content: Content
+        owner_type: Owner
+        user: User
 
     models:
-      simon_asks:
-        question:
-          one: Question
-          other: Questions
-          answer:
-            one: Answer
-            other: Answers
-        comment:
-          one: Comment
-          other: Comments
-        rate:
-          one: Rating
-          other: Ratings
+      simon_asks/question:
+        one: Question
+        other: Questions
+      simon_asks/question_answer:
+        one: Answer
+        other: Answers
+      simon_asks/comment:
+        one: Comment
+        other: Comments
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
@@ -41,28 +57,18 @@ en:
         meal_value: meal
     questions:   
       title: 'Questions'
-      answers: !!pl
-        0: 'question'
-        1: 'question'
-        2: 'questions'
-        n: 'questions'
-      answers_with_num: !!pl
-        0: '%1 answer'
-        1: '%1 answer'
-        2: '%1 answers'
-        n: '%1 answers'
-      votes: !!pl
-        -2: 'vote'
-        -1: 'vote'
-        0: 'vote'
-        1: 'vote'
-        2: 'votes'
-        n: 'votes'
-      views: !!pl
-        0: '%1 views'
-        1: '%1 views'
-        2: '%1 views'
-        n: '%1 views'
+      answers: 
+        one: 'question'
+        other: 'questions'
+      answers_with_num: 
+        one: '%1 answer'
+        other: '%1 answers'
+      votes: 
+        one: 'vote'
+        other: 'votes'
+      views: 
+        one: '%1 views'
+        other: '%1 views'
       tags: 'Tags'
       find_global: 'Find an answer!'
       ask: 'Ask'

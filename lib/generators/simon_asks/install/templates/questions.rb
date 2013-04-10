@@ -42,13 +42,7 @@ ActiveAdmin.register SimonAsks::Question do
 
   form do |f|
     f.actions
-    errors_count = f.object.errors.size
-    errors = f.object.errors.full_messages
-    if errors_count > 0
-      f.inputs I18n.t("active_admin.errors") do
-        content_tag(:li, errors.join('<br/>').html_safe, class: 'errors_messages')
-      end
-    end
+    display_error_messages f 
     f.inputs I18n.t("active_admin.data") do  
       f.input :title
       f.input :tag_list, as: :string

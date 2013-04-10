@@ -2,23 +2,43 @@
 ru:
   activerecord:
     attributes:
-      simon_asks:
-        question:
+      simon_asks/question:
+        title: 'Заголовок'
+        content: 'Вопрос'
+        tag_list: 'Темы'
+        user: Пользователь
+        image: Логотип
+        created_at: Создан
+        updated_at: Обновлен
+      simon_asks/question_answer:
+        content: 'Текст'
+        question: 'Вопрос'
+        user: 'Пользователь'
+        created_at: 'Создан'
+        comments_count: 'Кол-во комментариев'
+        updated_at: 'Обновлен'
+      simon_asks/comment:
+        created_at: Создан
+        updated_at: Обновлен
+        state: Состояние
+        content: Текст
+        owner_type: Создан для
+        user: Пользователь
+
 
     models:
-      simon_asks:
-        question:
-          one: Вопрос
-          other: Вопросы
-          answer:
-            one: Ответ
-            other: Ответы
-        comment:
-          one: Комментарий
-          other: Комментарии
-        rate:
-          one: Рейтинг
-          other: Рейтинги
+      simon_asks/question:
+        one: Вопрос
+        other: Вопросы
+      simon_asks/question_answer:
+        one: Ответ
+        other: Ответы
+      simon_asks/comment:
+        one: Комментарий
+        other: Комментарии
+      rate:
+        one: Рейтинг
+        other: Рейтинги
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
@@ -41,28 +61,26 @@ ru:
         meal_value: еда
     questions:
       title: 'Вопросы'
-      answers: !!pl
-        0: 'ответов'
-        1: 'ответ'
-        2: 'ответа'
-        n: 'ответов'
-      answers_with_num: !!pl
-        0: '%1 ответов'
-        1: '%1 ответ'
-        2: '%1 ответа'
-        n: '%1 ответов'
-      votes: !!pl
-        -2: 'голоса'
-        -1: 'голос'
-        0: 'голосов'
-        1: 'голос'
-        2: 'голоса'
-        n: 'голосов'
-      views: !!pl
-        0: '%1 просмотров'
-        1: '%1 просмотр'
-        2: '%1 просмотра'
-        n: '%1 просмотров'
+      answers: 
+        one: ответ
+        few: ответа
+        other: ответов
+        many: ответов
+      answers_with_num:
+        other: '%1 ответов'
+        one: '%1 ответ'
+        few: '%1 ответа'
+        many: '%1 ответов'
+      votes: 
+        many: 'голосов'
+        one: 'голос'
+        few: 'голоса'
+        other: 'голосов'
+      views: 
+        other: '%1 просмотров'
+        one: '%1 просмотр'
+        few: '%1 просмотра'
+        many: '%1 просмотров'
       tags: 'Темы'
       find_global: 'Найди ответ!'
       ask: 'Задать'
