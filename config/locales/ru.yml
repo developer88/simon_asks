@@ -10,6 +10,7 @@ ru:
         image: Логотип
         created_at: Создан
         updated_at: Обновлен
+        marked: Вопрос дня
       simon_asks/question_answer:
         content: 'Текст'
         question: 'Вопрос'
@@ -39,6 +40,12 @@ ru:
       rate:
         one: Рейтинг
         other: Рейтинги
+  active_admin:
+    batch_actions:
+      labels:
+        mark: "Сделать 'Вопросом дня'" 
+      notices:
+        mark: "Статус был успешно обновлен"       
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
@@ -51,6 +58,9 @@ ru:
         created: Комментарий успешно сохранен
         updated: Комментарий был успешно обновлен
     question:
+      marked:
+        true: Да
+        false: Нет
       was:
         created: Вопрос успешно сохранен
         updated: Вопрос был успешно обновлен

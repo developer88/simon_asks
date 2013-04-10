@@ -2,6 +2,14 @@ ActiveAdmin.register SimonAsks::Question do
 
   menu :parent => I18n.t("simon_asks.active_admin.q_n_a")
 
+  batch_action :mark do |selection|
+    SimonAsks::Question.find(selection).each do |question|
+      question.unmark! if question.marked
+      question.mark! unless question.marked
+    end
+    redirect_to collection_path, :notice => I18n.t('active_admin.batch_actions.notices.mark')
+  end
+
   controller do
 
     after_filter :set_user_hook, :only => :create
@@ -32,7 +40,10 @@ ActiveAdmin.register SimonAsks::Question do
     end  
     column resource_object.human_attribute_name(:user) do |obj|
       mail_to obj.user.email if obj.user
-    end                        
+    end   
+    column resource_object.human_attribute_name(:marked), :sortable => :marked do |obj|
+      t("simon_asks.question.marked.#{obj.marked.to_s}")
+    end                      
     column I18n.t("active_admin.actions") do |obj|
      links = link_to I18n.t(:edit), edit_admin_simon_asks_question_path(obj.id)
      links += '&nbsp;&nbsp;'.html_safe
@@ -55,6 +66,9 @@ ActiveAdmin.register SimonAsks::Question do
   show do |obj|
     attributes_table do
       row :title
+      row :marked do
+        t("simon_asks.question.marked.#{obj.marked.to_s}")
+      end
       row :tag_list 
       row :user do
         mail_to obj.user.email if obj.user

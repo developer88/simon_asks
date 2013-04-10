@@ -53,17 +53,6 @@ module SimonAsks
       redirect_to questions_path
     end
 
-    def mark
-      # Unmark marked question
-      @marked_question = Question.find_by_marked(true)
-      @marked_question.unmark! if @marked_question
-
-      # Mark new question
-      @question.mark!
-
-      redirect_to question_path(@question)
-    end
-
     def edit_image
     end
 
