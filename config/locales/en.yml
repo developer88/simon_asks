@@ -10,6 +10,7 @@ en:
         image: Picture
         created_at: Created at
         updated_at: Updated at
+        marked: Question of the Day
       simon_asks/question_answer:
         content: Content
         question: Question
@@ -35,6 +36,12 @@ en:
       simon_asks/comment:
         one: Comment
         other: Comments
+  active_admin:
+    batch_actions:
+      labels:
+        mark: "Mark as 'Question of the Day'" 
+      notices:
+        mark: "Status was updated sucessfully"            
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
@@ -47,6 +54,9 @@ en:
         created: Comment was created
         updated: Comment was updated     
     question:
+      marked:
+        true: Yes
+        false: No    
       was:
         created: Question was created
         updated: Question was updated
