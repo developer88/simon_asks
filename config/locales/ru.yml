@@ -2,29 +2,43 @@
 ru:
   activerecord:
     attributes:
-      simon_asks:
-        question:
-          title: 'Заголовок'
-          content: 'Вопрос'
-          tag_list: 'Темы'
-        question_answer:
-          content: 'Текст'
-          question: 'Вопрос'
+      simon_asks/question:
+        title: 'Заголовок'
+        content: 'Вопрос'
+        tag_list: 'Темы'
+        user: Пользователь
+        image: Логотип
+        created_at: Создан
+        updated_at: Обновлен
+      simon_asks/question_answer:
+        content: 'Текст'
+        question: 'Вопрос'
+        user: 'Пользователь'
+        created_at: 'Создан'
+        comments_count: 'Кол-во комментариев'
+        updated_at: 'Обновлен'
+      simon_asks/comment:
+        created_at: Создан
+        updated_at: Обновлен
+        state: Состояние
+        content: Текст
+        owner_type: Создан для
+        user: Пользователь
+
 
     models:
-      simon_asks:
-        question:
-          one: Вопрос
-          other: Вопросы
-          answer:
-            one: Ответ
-            other: Ответы
-        comment:
-          one: Комментарий
-          other: Комментарии
-        rate:
-          one: Рейтинг
-          other: Рейтинги
+      simon_asks/question:
+        one: Вопрос
+        other: Вопросы
+      simon_asks/question_answer:
+        one: Ответ
+        other: Ответы
+      simon_asks/comment:
+        one: Комментарий
+        other: Комментарии
+      rate:
+        one: Рейтинг
+        other: Рейтинги
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'

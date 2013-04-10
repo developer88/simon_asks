@@ -2,23 +2,39 @@
 en:
   activerecord:
     attributes:
-      simon_asks:
-        question:
+      simon_asks/question:
+        title: Title
+        content: Question
+        tag_list: Tags
+        user: User
+        image: Picture
+        created_at: Created at
+        updated_at: Updated at
+      simon_asks/question_answer:
+        content: Content
+        question: Question
+        user: User
+        created_at: Created at
+        comments_count: Comments count
+        updated_at: Updated at
+      simon_asks/comment:
+        created_at: Created at
+        updated_at: Updated at
+        state: State
+        content: Content
+        owner_type: Owner
+        user: User
 
     models:
-      simon_asks:
-        question:
-          one: Question
-          other: Questions
-          answer:
-            one: Answer
-            other: Answers
-        comment:
-          one: Comment
-          other: Comments
-        rate:
-          one: Rating
-          other: Ratings
+      simon_asks/question:
+        one: Question
+        other: Questions
+      simon_asks/question_answer:
+        one: Answer
+        other: Answers
+      simon_asks/comment:
+        one: Comment
+        other: Comments
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
