@@ -42,6 +42,14 @@ ru:
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
+    question_answer:
+      was:
+        created: Ответ успешно сохранен
+        updated: Ответ был успешно обновлен
+    comment:
+      was:
+        created: Комментарий успешно сохранен
+        updated: Комментарий был успешно обновлен
     question:
       was:
         created: Вопрос успешно сохранен
@@ -67,20 +75,20 @@ ru:
         other: ответов
         many: ответов
       answers_with_num:
-        other: '%1 ответов'
-        one: '%1 ответ'
-        few: '%1 ответа'
-        many: '%1 ответов'
+        other: '%{count} ответов'
+        one: '%{count} ответ'
+        few: '%{count} ответа'
+        many: '%{count} ответов'
       votes: 
         many: 'голосов'
         one: 'голос'
         few: 'голоса'
         other: 'голосов'
       views: 
-        other: '%1 просмотров'
-        one: '%1 просмотр'
-        few: '%1 просмотра'
-        many: '%1 просмотров'
+        other: '%{count} просмотров'
+        one: '%{count} просмотр'
+        few: '%{count} просмотра'
+        many: '%{count} просмотров'
       tags: 'Темы'
       find_global: 'Найди ответ!'
       ask: 'Задать'

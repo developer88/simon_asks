@@ -38,6 +38,14 @@ en:
   simon_asks:
     active_admin:
       q_n_a: 'Q&A'
+    question_answer:
+      was:
+        created: Answer was created
+        updated: Answer was updated
+    comment:
+      was:
+        created: Comment was created
+        updated: Comment was updated     
     question:
       was:
         created: Question was created
@@ -61,14 +69,14 @@ en:
         one: 'question'
         other: 'questions'
       answers_with_num: 
-        one: '%1 answer'
-        other: '%1 answers'
+        one: '%{count} answer'
+        other: '%{count} answers'
       votes: 
         one: 'vote'
         other: 'votes'
       views: 
-        one: '%1 views'
-        other: '%1 views'
+        one: '%{count} views'
+        other: '%{count} views'
       tags: 'Tags'
       find_global: 'Find an answer!'
       ask: 'Ask'

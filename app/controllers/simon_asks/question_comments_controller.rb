@@ -11,7 +11,7 @@ module SimonAsks
       @comment.user = current_user
       if @comment.save
         respond_to do |format|
-          format.html { redirect_to @question, notice: t.comment.was.created }
+          format.html { redirect_to @question, notice: t('simon_asks.comment.was.created') }
           format.js
         end
       else
@@ -27,7 +27,7 @@ module SimonAsks
 
     def update
       if @comment.update_attributes(params[:comment])
-        redirect_to question_path(@question), notice: t.comment.was.updated
+        redirect_to question_path(@question), notice: t('simon_asks.comment.was.updated')
       else
         render :edit
       end
@@ -36,7 +36,7 @@ module SimonAsks
     def destroy
       if @comment.destroy
         respond_to do |format|
-          format.html { redirect_to @question, notice: t.comment.was.destroyed }
+          format.html { redirect_to @question, notice: t('simon_asks.comment.was.destroyed') }
           format.js { render js: "$('.comment-item##{@comment.id}').html('<div class=\"destroyed\">#{t.comment.was.destroyed}</div>');" }
         end
       else
