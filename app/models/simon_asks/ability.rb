@@ -66,6 +66,9 @@ module SimonAsks
           SimonAsks::Comment.find(params[:id]).user_id == user.id
         end
 
+        if user.is? :admin
+          can :manage, :all
+        end
 
         #include any abilities registered by extensions, etc.
         Ability.abilities.each do |clazz|
