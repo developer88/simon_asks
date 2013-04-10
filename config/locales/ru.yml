@@ -4,6 +4,12 @@ ru:
     attributes:
       simon_asks:
         question:
+          title: 'Заголовок'
+          content: 'Вопрос'
+          tag_list: 'Темы'
+        question_answer:
+          content: 'Текст'
+          question: 'Вопрос'
 
     models:
       simon_asks:
