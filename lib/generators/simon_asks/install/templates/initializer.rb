@@ -1,2 +1,6 @@
+# Defince user class
 SimonAsks.user_class = "<%= user_class %>"
-#Forem::Ability.register_ability(Ability)
+
+# You can pass yourown Ability class by uncommenting this line: 
+
+#    SimonAsks::Ability.register_ability(Ability)
