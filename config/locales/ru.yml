@@ -67,6 +67,8 @@ ru:
         religion_value: религия
         meal: О еде
         meal_value: еда
+    question_answers:
+      edit: Редактировать
     questions:
       title: 'Вопросы'
       answers: 

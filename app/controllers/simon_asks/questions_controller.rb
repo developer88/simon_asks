@@ -31,7 +31,7 @@ module SimonAsks
       @question = Question.new(params[:question])
       @question.user = current_user
       if @question.save
-        redirect_to question_path(@question), notice: t('simon_asks.question.was_created')
+        redirect_to question_path(@question), notice: t('simon_asks.question.was.created')
       else
         render :new
       end
@@ -42,7 +42,7 @@ module SimonAsks
 
     def update
       if @question.update_attributes(params[:question])
-        redirect_to question_path(@question), notice: t('simon_asks.question.was_updated')
+        redirect_to question_path(@question), notice: t('simon_asks.question.was.updated')
       else
         render :edit
       end
