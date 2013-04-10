@@ -21,17 +21,12 @@ module SimonAsks
     end
 
     def initialize(user, params)
-      # define alias
-      alias_action :update, :destroy, :to => :modify
 
+      # Just and Example
+      # TODO do smth to automatically include it into main app
       can [:read], SimonAsks::Question
-      #can [:read, :rate], Attachment do |att|
-      #  check_access_level(att.attachable, user, :access, :user)
-      #end
-
       # if user
       if user
-
         # Comments
         can [:create], SimonAsks::Comment do |c|
           if c.owner
@@ -44,42 +39,33 @@ module SimonAsks
         can [:destroy], SimonAsks::Comment do |c|
           c.user_id == user.id
         end
-
-        #can :manage, Attachment do |a|
-        #  a.attachable.user == user
-        #end
-
         # Questions
         can [:create], SimonAsks::Question
         can [:update], SimonAsks::Question do |q|
           q.user_id == user.id
         end
-
         can [:upvote, :downvote], SimonAsks::Question do |q|
           q.user_id != user.id
         end
-
         # Answers
         can [:create], SimonAsks::QuestionAnswer
         can [:update], SimonAsks::QuestionAnswer do |a|
           a.user_id == user.id
         end
-
         can [:upvote, :downvote], SimonAsks::QuestionAnswer do |a|
           a.user_id != user.id
         end
-
         # Answer comments
         can [:create], :answer_comment
         can [:destroy], :answer_comment do
           SimonAsks::Comment.find(params[:id]).user_id == user.id
         end
-
         # question comments
         can [:create], :question_comment
         can [:destroy], :question_comment do
           SimonAsks::Comment.find(params[:id]).user_id == user.id
         end
+
 
         #include any abilities registered by extensions, etc.
         Ability.abilities.each do |clazz|
