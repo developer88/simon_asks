@@ -6,7 +6,7 @@ module SimonAsks
 
     before_filter :find_question_by_id, only: [:show, :edit, :update, :destroy]
     before_filter :find_question_by_question_id, only: [:mark, :edit_image, :upvote, :downvote]
-    before_filter :merge_tags, only: [:update, :create]
+    #before_filter :merge_tags, only: [:update, :create]
 
     def index
       # TODO add option to enable this
