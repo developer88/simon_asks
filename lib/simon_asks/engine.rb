@@ -9,11 +9,11 @@ module SimonAsks
       end
     end
 
-    initializer 'simon_asks.action_controller' do |app|
-      ActiveSupport.on_load :action_controller do
-        helper SimonAsks::QuestionsHelper
-      end
-    end    
+    #initializer 'simon_asks.action_controller' do |app|
+    #  ActiveSupport.on_load :action_controller do
+    #    helper SimonAsks::QuestionsHelper
+    #  end
+    #end    
 
   end
 end

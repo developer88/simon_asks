@@ -1,6 +1,6 @@
 module SimonAsks
   class ApplicationController < ApplicationController
-    helper SimonAsks::QuestionsHelper
+    helper SimonAsks::Engine.helpers
 
     private
 
