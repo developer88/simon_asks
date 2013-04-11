@@ -8,11 +8,12 @@ module SimonAsks
 
     def create
       @question = Question.find(params[:question_id])
+
+      raise CanCan::AccessDenied.new("Not authorized!", :create, SimonAsks::QuestionAnswer) if current_user.question_answers.where(:question_id => @question.id).size != 0
+
       @answer = QuestionAnswer.new(params[:question_answer])
       @answer.question = @question
       @answer.user = current_user
-
-      #raise authorize!(:create, @answer).inspect # Manually check permissions here
 
       if @answer.save
         respond_to do |format|
