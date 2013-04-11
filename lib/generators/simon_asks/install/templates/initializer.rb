@@ -6,6 +6,6 @@ SimonAsks.user_class = "<%= user_class %>"
 #    SimonAsks::Ability.register_ability(Ability)
 
 # connect helpers from SimonAsks
-SimonAsks::Engine.class_eval do
-  paths["app/helpers"] << File.join(File.dirname(__FILE__), '../..', 'app/helpers')
-end
+#SimonAsks::Engine.class_eval do
+#  paths["app/helpers"] << File.join(File.dirname(__FILE__), '../..', 'app/helpers')
+#end
