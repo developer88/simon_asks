@@ -5,7 +5,7 @@ module SimonAsks
     end
 
     def show_tag_list(question)
-      raw question.tag_list.map { |t| link_to t, questions_tag_path(t), class: 'plink' }.join(', ')
+      raw question.tag_list.map { |t| link_to t, simon_asks.questions_tag_path(t), class: 'plink' }.join(', ')
     end
 
     def current_path
