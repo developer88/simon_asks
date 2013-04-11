@@ -47,6 +47,7 @@ ru:
       notices:
         mark: "Статус был успешно обновлен"       
   simon_asks:
+    show_more: Показать еще
     active_admin:
       q_n_a: 'Q&A'
     question_answer:
@@ -78,6 +79,7 @@ ru:
         meal: О еде
         meal_value: еда
     question_answers:
+      title: Ответы
       edit: Редактировать
     questions:
       title: 'Вопросы'

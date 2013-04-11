@@ -43,6 +43,7 @@ en:
       notices:
         mark: "Status was updated sucessfully"            
   simon_asks:
+    show_more: Show more
     active_admin:
       q_n_a: 'Q&A'
     question_answer:
@@ -73,6 +74,9 @@ en:
         religion_value: religion
         meal: Meal
         meal_value: meal
+    question_answers:
+      title: Answers
+      edit: Edit        
     questions:   
       title: 'Questions'
       answers: 
