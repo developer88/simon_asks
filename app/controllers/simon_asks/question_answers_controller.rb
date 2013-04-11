@@ -12,7 +12,7 @@ module SimonAsks
       @answer.question = @question
       @answer.user = current_user
 
-      authorize! :сreate, @answer # Manually check permissions here
+      authorize! :create, @answer # Manually check permissions here
 
       if @answer.save
         respond_to do |format|
