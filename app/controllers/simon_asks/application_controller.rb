@@ -2,6 +2,8 @@ module SimonAsks
   class ApplicationController < ApplicationController
     helper SimonAsks::Engine.helpers
 
+    check_authorization
+
     private
 
     def current_ability
