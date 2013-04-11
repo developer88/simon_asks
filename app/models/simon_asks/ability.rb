@@ -22,6 +22,7 @@ module SimonAsks
 
     def initialize(user, params)
 
+=begin
       # Just and Example
       # TODO do smth to automatically include it into main app
       can [:read], SimonAsks::Question
@@ -69,6 +70,7 @@ module SimonAsks
         if user.is? :admin
           can :manage, :all
         end
+=end        
 
         #include any abilities registered by extensions, etc.
         Ability.abilities.each do |clazz|
