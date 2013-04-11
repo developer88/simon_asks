@@ -22,12 +22,13 @@ module SimonAsks
 
     def initialize(user, params)
 
+      if user
 =begin
       # Just and Example
       # TODO do smth to automatically include it into main app
       can [:read], SimonAsks::Question
       # if user
-      if user
+      
         # Comments
         can [:create], SimonAsks::Comment do |c|
           if c.owner
