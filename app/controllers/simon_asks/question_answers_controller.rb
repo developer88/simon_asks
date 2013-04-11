@@ -11,6 +11,9 @@ module SimonAsks
       @answer = QuestionAnswer.new(params[:question_answer])
       @answer.question = @question
       @answer.user = current_user
+
+      authorize! :сreate, @answer # Manually check permissions here
+
       if @answer.save
         respond_to do |format|
           format.html { redirect_to question_path(@question), notice: t('simon_asks.answer.was_created') }
