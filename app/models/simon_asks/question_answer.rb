@@ -42,14 +42,12 @@ module SimonAsks
       upvotes.size - downvotes.size
     end
 
-    def accept!
+    def accept
       accepted = true
-      save
     end
 
-    def reject!
+    def reject
       accepted = false
-      save
     end
 
   end

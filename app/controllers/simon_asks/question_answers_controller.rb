@@ -70,7 +70,8 @@ module SimonAsks
       if current_user.question_answers.accepted_only.where(:question_id => @answer.question_id).size != 0
         render :js => "alert('Not accepted');"
       end      
-      render :js => "alert('Accepted = #{@answer.accept!}');"
+      @answer.accept
+      render :js => "alert('Accepted = #{@answer.save}');"
     end
 
     def destroy
