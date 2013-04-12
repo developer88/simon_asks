@@ -67,7 +67,7 @@ module SimonAsks
     end
 
     def accept
-      if current_user.question_answers.accepted_only.where(:question_id => @question.id) != 0
+      if current_user.question_answers.accepted_only.where(:question_id => @answer.question.id) != 0
         raise CanCan::AccessDenied.new("Not authorized!", :create, SimonAsks::QuestionAnswer) 
       end
       @answer.accept!
