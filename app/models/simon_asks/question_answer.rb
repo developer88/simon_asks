@@ -44,12 +44,12 @@ module SimonAsks
 
     def accept!
       accepted = true
-      save!
+      save
     end
 
     def reject!
       accepted = false
-      save!
+      save
     end
 
   end
