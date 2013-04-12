@@ -71,7 +71,7 @@ module SimonAsks
         render :js => "alert('Not accepted');"
       end      
       @answer.accepted = true
-      @answer.save
+      @answer.save!
       render :js => "alert('Accepted!');"
     end
 
