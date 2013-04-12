@@ -1,7 +1,7 @@
 module SimonAsks
   class QuestionCommentsController < SimonAsks::ApplicationController
 
-    authorize_resource class: false
+     #authorize_resource class: false
 
     before_filter :find_question
     before_filter :find_comment, except: [:create]
@@ -9,6 +9,7 @@ module SimonAsks
     def create
       @comment = @question.comments.build(params[:comment])
       @comment.user = current_user
+      authorize! :create, @comment
       if @comment.save
         respond_to do |format|
           format.html { redirect_to @question, notice: t('simon_asks.comment.was.created') }
@@ -23,9 +24,11 @@ module SimonAsks
     end
 
     def edit
+      authorize! :edit, @comment
     end
 
     def update
+      authorize! :update, @comment
       if @comment.update_attributes(params[:comment])
         redirect_to question_path(@question), notice: t('simon_asks.comment.was.updated')
       else
@@ -34,6 +37,7 @@ module SimonAsks
     end
 
     def destroy
+      authorize! :destroy, @comment
       if @comment.destroy
         respond_to do |format|
           format.html { redirect_to @question, notice: t('simon_asks.comment.was.destroyed') }
