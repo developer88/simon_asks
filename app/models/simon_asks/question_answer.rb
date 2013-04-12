@@ -10,7 +10,7 @@ module SimonAsks
 
     #
     # Accesses
-    attr_accessible :content, :user, :question
+    attr_accessible :content, :user, :question, :accepted
 
     #
     # Validation
