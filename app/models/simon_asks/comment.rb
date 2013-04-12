@@ -18,7 +18,7 @@ module SimonAsks
       owner_type.constantize.reset_counters(owner_id, :comments)
     end
 
-    default_scope order('created_at ASC')
+    default_scope order('created_at DESC')
     scope :ordered, order { [created_at.desc, owner_type, owner_id, depth, user_id] }
     scope :by_state, proc { |s| s.blank? || s == 'all' ? scoped : where(state: s) }
     scope :published, proc { |user| where { |q| (q.state == 'approved') | (q.user_id == user.try(:id)) }.order(:created_at) }
