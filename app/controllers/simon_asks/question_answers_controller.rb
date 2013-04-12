@@ -17,7 +17,7 @@ module SimonAsks
 
       if @answer.save
         respond_to do |format|
-          format.html { redirect_to question_path(@question), notice: t('simon_asks.answer.was_created') }
+          format.html { redirect_to question_path(@question), notice: t('simon_asks.answer.was.created') }
           format.js
         end
       else
@@ -34,7 +34,7 @@ module SimonAsks
 
     def update
       if @answer.update_attributes(params[:question_answer])
-        redirect_to question_path(@answer.question), notice: t('simon_asks.question_answer.was_updated')
+        redirect_to question_path(@answer.question), notice: t('simon_asks.question_answer.was.updated')
       else
         render :edit
       end

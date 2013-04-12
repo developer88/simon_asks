@@ -76,7 +76,8 @@ en:
         meal_value: meal
     question_answers:
       title: Answers
-      edit: Edit        
+      edit: Edit  
+      edit_full: Edit answer      
     questions:   
       title: 'Questions'
       answers: 

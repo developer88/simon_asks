@@ -81,6 +81,7 @@ ru:
     question_answers:
       title: Ответы
       edit: Редактировать
+      edit_full: Редактировать ответ
     questions:
       title: 'Вопросы'
       answers: 
