@@ -43,11 +43,11 @@ module SimonAsks
     end
 
     def accept
-      accepted = true
+      self.accepted = true
     end
 
     def reject
-      accepted = false
+      self.accepted = false
     end
 
   end
