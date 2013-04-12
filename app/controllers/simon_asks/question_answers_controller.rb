@@ -67,12 +67,10 @@ module SimonAsks
     end
 
     def accept
-      if current_user.question_answers.accepted_only.where(:question_id => @answer.question.id) != 0
-        raise CanCan::AccessDenied.new("Not authorized!", :create, SimonAsks::QuestionAnswer) 
-      end
-      @answer.accept!
-      #render :js => "alert('Hello Rails');"
-      render :nothing => true
+      if current_user.question_answers.accepted_only.where(:question_id => @answer.question_id).size != 0
+        render :js => "alert('Not accepted');"
+      end      
+      render :js => "alert('Accepted = #{@answer.accept!}');"
     end
 
     def destroy
