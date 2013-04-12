@@ -53,7 +53,8 @@ en:
     comment:
       was:
         created: Comment was created
-        updated: Comment was updated     
+        updated: Comment was updated 
+        destroyed: Comment was destroyed   
     question:
       marked:
         true: Yes

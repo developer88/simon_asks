@@ -58,6 +58,7 @@ ru:
       was:
         created: Комментарий успешно сохранен
         updated: Комментарий был успешно обновлен
+        destroyed: Комментарий был удален
     question:
       marked:
         true: Да
