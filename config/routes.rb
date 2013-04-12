@@ -11,7 +11,7 @@ SimonAsks::Engine.routes.draw do
       get 'upvote'
       get 'downvote'
       # TODO change vote methods to post
-      post 'accept'
+      get 'accept'
       resources :comments, controller: 'answer_comments', only: [:create, :edit, :update, :destroy]
     end
     resources :comments, controller: 'question_comments', only: [:create, :edit, :update, :destroy]
