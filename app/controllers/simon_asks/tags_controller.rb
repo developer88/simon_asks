@@ -1,7 +1,5 @@
 module SimonAsks
   class TagsController < SimonAsks::ApplicationController
-    
-    #TODO Authorize?
 
     def index
       if params[:q].present?

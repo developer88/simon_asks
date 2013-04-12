@@ -6,9 +6,12 @@ SimonAsks::Engine.routes.draw do
     get 'edit/image', to: 'questions#edit_image'
     get 'upvote'
     get 'downvote'
+    # TODO change vote methods to post
     resources :answers, controller: 'question_answers', only: [:create, :edit, :update, :destroy] do
       get 'upvote'
       get 'downvote'
+      # TODO change vote methods to post
+      post 'accept'
       resources :comments, controller: 'answer_comments', only: [:create, :edit, :update, :destroy]
     end
     resources :comments, controller: 'question_comments', only: [:create, :edit, :update, :destroy]

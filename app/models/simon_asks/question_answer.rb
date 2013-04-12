@@ -21,6 +21,8 @@ module SimonAsks
 
     default_scope order('cached_votes_score DESC, created_at ASC')
 
+    scope :accepted_only, proc { |a| a.accepted == true }
+
     auto_html_for :content do
       html_escape
       image
@@ -39,5 +41,16 @@ module SimonAsks
     def score
       upvotes.size - downvotes.size
     end
+
+    def accept!
+      accepted = true
+      save!
+    end
+
+    def reject!
+      accepted = false
+      save!
+    end
+
   end
 end

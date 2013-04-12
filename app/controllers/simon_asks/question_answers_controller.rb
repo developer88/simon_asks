@@ -4,7 +4,7 @@ module SimonAsks
     authorize_resource class: SimonAsks::QuestionAnswer
 
     before_filter :find_answer_by_id, only: [:edit, :update, :destroy]
-    before_filter :find_answer_by_answer_id, only: [:upvote, :downvote]
+    before_filter :find_answer_by_answer_id, only: [:upvote, :downvote, :accept]
 
     def create
       @question = Question.find(params[:question_id])
@@ -64,6 +64,15 @@ module SimonAsks
       else
         @error = 1
       end
+    end
+
+    def accept
+      if current_user.question_answers.accepted_only.where(:question_id => @question.id) != 0
+        raise CanCan::AccessDenied.new("Not authorized!", :create, SimonAsks::QuestionAnswer) 
+      end
+      @answer.accept!
+      #render :js => "alert('Hello Rails');"
+      render :nothing => true
     end
 
     def destroy
