@@ -78,7 +78,9 @@ en:
     question_answers:
       title: Answers
       edit: Edit  
-      edit_full: Edit answer      
+      edit_full: Edit answer  
+      accept: Accept
+      reject: Reject    
     questions:   
       title: 'Questions'
       answers: 

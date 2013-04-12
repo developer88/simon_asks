@@ -83,6 +83,8 @@ ru:
       title: Ответы
       edit: Редактировать
       edit_full: Редактировать ответ
+      accept: Принять
+      reject: Отвергнуть
     questions:
       title: 'Вопросы'
       answers: 
