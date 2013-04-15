@@ -69,6 +69,7 @@ module SimonAsks
     def accept
       js_source = ""
       if SimonAsks::QuestionAnswer.accepted_only.where(:question_id => @answer.question_id).size != 0
+        SimonAsks::QuestionAnswer.accepted_only.where(:question_id => @answer.question_id).update_all(:accepted => false)
         js_source = "$('.answer-item').each(function(){ $(this).find('a.accept_link').removeClass('accepted'); });";
       end  
       unless @answer.accepted    
