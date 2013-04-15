@@ -42,13 +42,13 @@ module SimonAsks
       upvotes.size - downvotes.size
     end
 
-    def accept
-      self.accepted = true
-    end
+    #def accept
+    #  self.accepted = true
+    #end
 
-    def reject
-      self.accepted = false
-    end
+    #def reject
+    #  self.accepted = false
+   # end
 
   end
 end

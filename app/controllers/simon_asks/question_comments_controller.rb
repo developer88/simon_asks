@@ -41,7 +41,7 @@ module SimonAsks
       if @comment.destroy
         respond_to do |format|
           format.html { redirect_to @question, notice: t('simon_asks.comment.was.destroyed') }
-          format.js { render js: "$('.comment-item##{@comment.id}').html('<div class=\"destroyed\">#{t.comment.was.destroyed}</div>');" }
+          format.js { render js: "$('.comment-item##{@comment.id}').html('<div class=\"destroyed\">#{t('simon_asks.comment.was.destroyed')}</div>');" }
         end
       else
         respond_to do |format|

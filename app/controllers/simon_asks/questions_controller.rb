@@ -12,6 +12,7 @@ module SimonAsks
     def index
       # TODO add option to enable this
       #@question_of_day = Question.find_by_marked(true)
+      @questions = []
       if params[:tag]
         @questions = Question.tagged_with(params[:tag]).page(params[:page])
       else
