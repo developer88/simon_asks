@@ -5,7 +5,7 @@ module SimonAsks
 
     include PgSearch
 
-    ITEMS_PER_PAGE = 10
+    paginates_per 7
 
     pg_search_scope :search_by_title_and_content, against: [:title, :content], using: { tsearch: { prefix: true} }
 

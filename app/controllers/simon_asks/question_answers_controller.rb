@@ -67,12 +67,16 @@ module SimonAsks
     end
 
     def accept
+      js_source = ""
       if SimonAsks::QuestionAnswer.accepted_only.where(:question_id => @answer.question_id).size != 0
-        render :js => "alert('Not accepted');"
-      end      
-      @answer.accepted = true
-      @answer.save!
-      render :js => "alert('Accepted!');"
+        js_source = "$('.answer-item').each(function(){ $(this).find('a.accept_link').removeClass('accepted'); });";
+      end  
+      unless @answer.accepted    
+        @answer.accepted = true
+        @answer.save!
+        js_source += " $('.answer-item').each(function(){ if($(this).attr('id') == #{@answer.id}){  $(this).find('a.accept_link').addClass('accepted');  } });"
+      end
+      render :js => js_source
     end
 
     def destroy

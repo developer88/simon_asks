@@ -7,6 +7,7 @@ module SimonAsks
     has_many :comments, as: 'owner'
 
     acts_as_votable
+    paginates_per 7
 
     #
     # Accesses

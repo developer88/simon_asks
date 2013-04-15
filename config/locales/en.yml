@@ -79,7 +79,7 @@ en:
       title: Answers
       edit: Edit  
       edit_full: Edit answer  
-      accept: Accept
+      accept: Mark as a right answer
       reject: Reject    
     questions:   
       title: 'Questions'
