@@ -13,11 +13,11 @@ module SimonAsks
     end
 
     def show_more_questions?(user)
-      true if Question.where(user_id: user).count > 6
+      true if Question.where(user_id: user).count > 3
     end
 
     def show_more_answers?(user)
-      true if QuestionAnswer.where(user_id: user).count > 6
+      true if QuestionAnswer.where(user_id: user).count > 3
     end
   end
 end
