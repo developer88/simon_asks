@@ -8,8 +8,8 @@ module SimonAsks
       desc "Used to copy simon_asks' controllers to your application's controllers folder."
 
       def copy_controllers
-        controller_file 'quesions_controller.rb'
-        controller_file 'quesion_answers_controller.rb'
+        controller_file 'questions_controller.rb'
+        controller_file 'question_answers_controller.rb'
       end
 
       protected
