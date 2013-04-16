@@ -80,6 +80,7 @@ en:
       edit: Edit  
       edit_full: Edit answer  
       accept: Mark as a right answer
+      accepted: Right answer
       reject: Reject    
     questions:   
       title: 'Questions'
