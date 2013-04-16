@@ -15,7 +15,7 @@ module SimonAsks
       protected
 
       def controller_file(name)
-        file name.to_s, "app/controllers/simon_asks/#{name}"
+        copy_file name.to_s, "app/controllers/simon_asks/#{name}"
       end
     end
   end

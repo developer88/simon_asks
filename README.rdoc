@@ -6,8 +6,9 @@ Q&amp;A Gem for Rails
 
 [Working in progress]
 
-rails g simon_asks:install
+ rails g simon_asks:install
  rails g simon_asks:views
+ rails g simon_asks:controllers
  rake simon_asks:install:migrations
 
  
