@@ -36,10 +36,11 @@ Run migrations as:
 
     $ rake db:migrate
 
-Copy views and controllers if you need them:
+Copy views, controllers and models if you need them:
 
     $ rails g simon_asks:views
     $ rails g simon_asks:controllers
+    $ rails g simon_asks:models
 
 ## Usage
 
