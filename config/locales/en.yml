@@ -97,6 +97,7 @@ en:
       views: 
         one: '%{count} views'
         other: '%{count} views'
+      views_simple: 'views'
       tags: 'Tags'
       find_global: 'Find an answer!'
       ask: 'Ask'

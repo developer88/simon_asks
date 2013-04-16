@@ -104,6 +104,7 @@ ru:
         one: 'голос'
         few: 'голоса'
         other: 'голосов'
+      views_simple: 'просмотров'
       views: 
         other: '%{count} просмотров'
         one: '%{count} просмотр'
