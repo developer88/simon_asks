@@ -4,11 +4,11 @@ module SimonAsks
 
     check_authorization
 
-    private
+    #private
 
-    def current_ability
-      @current_ability ||= SimonAsks::Ability.new(current_user, request.params)
-    end
+    #def current_ability
+    #  @current_ability ||= SimonAsks::Ability.new(current_user, request.params)
+    #end
 
   end
 end
