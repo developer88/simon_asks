@@ -87,6 +87,7 @@ ru:
       accepted: Правильный ответ
       reject: Отвергнуть
     questions:
+      similar_questions: 'Похожие вопросы'
       title: 'Вопросы'
       answers: 
         one: ответ

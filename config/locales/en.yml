@@ -83,6 +83,7 @@ en:
       accepted: Right answer
       reject: Reject    
     questions:   
+      similar_questions: 'Similar questions'
       title: 'Questions'
       answers: 
         one: 'question'
