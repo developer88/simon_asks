@@ -32,6 +32,11 @@ module SimonAsks
       simple_format
     end
 
+    def self.search(params)
+      params = {query: ''} if params.nil?
+      search_by_content(params[:query])
+    end
+
     #
     # Methods
     def can_edit?(user)

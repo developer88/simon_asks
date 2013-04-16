@@ -8,6 +8,10 @@ module SimonAsks
     paginates_per 7
 
     pg_search_scope :search_by_title_and_content, against: [:title, :content], using: { tsearch: { prefix: true} }
+    pg_search_scope :search_accociated_by_title_and_content, against: [:title, :content], :associated_against => {
+      :question_answer => :content
+    }
+
 
     belongs_to :user, :class_name => SimonAsks.user_class
     has_many :answers, class_name: 'QuestionAnswer', dependent: :destroy
@@ -57,7 +61,7 @@ module SimonAsks
 
     def self.search(params)
       params = {query: ''} if params.nil?
-      search_by_title_and_content(params[:query])
+      search_accociated_by_title_and_content(params[:query])
     end
 
     # incements views_counter by one
