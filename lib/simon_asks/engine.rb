@@ -9,6 +9,11 @@ module SimonAsks
       end
     end
 
+    def routes(rails_router)
+      load!
+      router.apply(rails_router)
+    end
+
     #initializer 'simon_asks.action_controller' do |app|
     #  ActiveSupport.on_load :action_controller do
     #    helper SimonAsks::QuestionsHelper
