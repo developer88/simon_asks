@@ -50,7 +50,7 @@ module SimonAsks
     end
 
     def self.related_to(question)
-      where('simon_asks_questions.id.id != ?', question.id)
+      where('simon_asks_questions.id != ?', question.id)
       .tagged_with(question.tag_list, :any => true)
       .limit(20)
     end
