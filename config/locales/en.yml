@@ -82,7 +82,8 @@ en:
       accept: Mark as a right answer
       accepted: Right answer
       reject: Reject    
-    questions:   
+    questions: 
+      new: New question  
       similar_questions: 'Similar questions'
       title: 'Questions'
       answers: 
