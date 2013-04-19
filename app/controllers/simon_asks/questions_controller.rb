@@ -15,6 +15,8 @@ module SimonAsks
       @questions = []
       if params[:tag]
         @questions = Question.tagged_with(params[:tag]).page(params[:page])
+      elsif params[:query]
+        @questions = Question.search(params[:query]).page(params[:page])
       else
         @questions = Question.page(params[:page])
       end

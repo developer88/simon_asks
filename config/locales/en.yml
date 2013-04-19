@@ -80,8 +80,10 @@ en:
       edit: Edit  
       edit_full: Edit answer  
       accept: Mark as a right answer
+      accepted: Right answer
       reject: Reject    
     questions:   
+      similar_questions: 'Similar questions'
       title: 'Questions'
       answers: 
         one: 'question'
@@ -95,6 +97,7 @@ en:
       views: 
         one: '%{count} views'
         other: '%{count} views'
+      views_simple: 'views'
       tags: 'Tags'
       find_global: 'Find an answer!'
       ask: 'Ask'

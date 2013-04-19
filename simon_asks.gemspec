@@ -8,12 +8,12 @@ Gem::Specification.new do |s|
   s.name        = "simon_asks"
   s.version     = SimonAsks::VERSION
   s.authors     = ["Andrey Eremin, Anton Volkov"]
-  s.email       = ["dsoft88@gmail.com, сhoixer@gmail.com"]
+  s.email       = ["dsoft88@gmail.com, choixer@gmail.com"]
   s.homepage    = "https://github.com/developer88/simon_asks"
   s.summary     = "Lightweight Q&A gem for Rails."
-  s.description = "Lightweight gem inspired by Stackoverflow for Ruby on Rails Applications."
+  s.description = "Lightweight Q&A gem for Ruby on Rails Applications inspired by Stackoverflow."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.12"

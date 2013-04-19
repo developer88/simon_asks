@@ -9,7 +9,7 @@ module SimonAsks
 
       def copy_views
         view_directory :questions
-        #view_directory :categories
+        view_directory :question_comments
         #view_directory :forums
         #view_directory :moderation
         #view_directory :posts

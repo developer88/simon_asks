@@ -84,8 +84,10 @@ ru:
       edit: Редактировать
       edit_full: Редактировать ответ
       accept: Отметить как правильный ответ
+      accepted: Правильный ответ
       reject: Отвергнуть
     questions:
+      similar_questions: 'Похожие вопросы'
       title: 'Вопросы'
       answers: 
         one: ответ
@@ -102,6 +104,7 @@ ru:
         one: 'голос'
         few: 'голоса'
         other: 'голосов'
+      views_simple: 'просмотров'
       views: 
         other: '%{count} просмотров'
         one: '%{count} просмотр'

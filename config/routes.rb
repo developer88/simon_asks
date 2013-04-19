@@ -2,6 +2,7 @@ SimonAsks::Engine.routes.draw do
 
   get 'questions/tags/:tag', to: 'questions#index', as: :questions_tag
   get 'questions/show/:show', to: 'questions#index', as: :questions_list
+  match 'questions/search', to: 'questions#index', as: :questions_search
   resources :questions do
     get 'mark'
     get 'edit/image', to: 'questions#edit_image'
