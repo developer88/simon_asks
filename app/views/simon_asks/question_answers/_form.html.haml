@@ -1,0 +1,12 @@
+= form_for answer, url: question_answers_path(question), remote: true, html: {class: 'baseform'} do |f|
+  = label answer, SimonAsks::QuestionAnswer.human_attribute_name(:content)
+  .field= f.text_area :content
+  .form-hint= t('simon_asks.questions.new_answer_hint')
+
+  = f.submit t('simon_asks.questions.answer'), class: 'btn', id: 'answer-submit'
+
+:javascript
+  $('#answer-submit').click(function() {
+    $('#add_answer_block').hide('slow');
+    $('#add_answer.loader').show();
+  });

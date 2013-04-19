@@ -1,0 +1,15 @@
+= link_to question_answer_downvote_path(answer.question, answer), remote: true do
+  - if current_user && current_user.voted_down_on?(answer)
+    .cycle.blue
+      .minus
+  - else
+    .cycle
+      .minus
+%span.vote-count= answer.score
+= link_to question_answer_upvote_path(answer.question, answer), remote: true do
+  - if current_user && current_user.voted_up_on?(answer)
+    .cycle.blue
+      .plus
+  - else
+    .cycle
+      .plus

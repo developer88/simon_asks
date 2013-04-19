@@ -1,0 +1,18 @@
+.consults
+  %h3
+    = t('simon_asks.questions.similar_questions')
+  - @related_questions.each do |question|
+    .consult-item
+      .title
+        = link_to question.title, simon_asks.question_path(question)
+      .block
+        %span.date
+        .col
+          = question.updated_at.strftime("%-d %B %Y")
+      .block
+        %span.inter
+        .col
+          = link_to show_user_name(question.user), account_profile_path(question.user)
+  -#%a{href: services_path} Все консультации 
+  .spacer
+  .vspace

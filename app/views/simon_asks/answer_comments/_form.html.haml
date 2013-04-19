@@ -1,0 +1,14 @@
+- comment = SimonAsks::Comment.new
+= form_for comment, url: question_answer_comments_path(answer.question, answer), remote: true, html: {class: 'baseform'} do |f|
+  .field
+    = f.text_area :content, class: "answer-comment-textarea", row: '2'
+  = f.submit t('simon_asks.questions.write_comment'), class: 'btn btn-green btn-small', id: "answer-comment-submit-#{answer.id}"
+
+:javascript
+  $(document).ready(function() {
+    $("#answer-comment-submit-#{answer.id}").click(function() {
+      var context = "#answer-#{answer.id} ";
+      $(context + '.add_answer_comment_block').hide('slow');
+      $(context + '.add_answer_comment.loader').show();
+    });
+  });

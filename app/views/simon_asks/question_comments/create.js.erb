@@ -1,7 +1,7 @@
 var context = ".comment-item#<%= @comment.id %>";
-$('#question-comments-list').append("<%= j render(partial: 'comment', locals: {comment: @comment, question: @question}) %>");
+$('#question-comments-list').prepend("<%= j render(partial: 'comment', locals: {comment: @comment, question: @question}) %>");
 $('#add_question_comment.loader').hide();
 $('#question-comment-textarea').val('');
 
-App.prepareCommentsLinks(context);
-App.prepareHints(context);
+SimonAsks.prepareCommentsLinks(context);
+SimonAsks.prepareHints(context);

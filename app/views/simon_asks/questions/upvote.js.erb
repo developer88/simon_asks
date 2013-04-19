@@ -1,3 +1,3 @@
-$('.question-wrapper .votecell').html(
-  "<%= escape_javascript(render partial: 'questions/vote', locals: {question: @question}) %>"
+$('.question .votes').html(
+  "<%= escape_javascript(render partial: 'simon_asks/questions/vote', locals: {question: @question}) %>"
 );

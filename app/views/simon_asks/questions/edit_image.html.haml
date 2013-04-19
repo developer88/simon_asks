@@ -1,5 +1,5 @@
 .content.title-row
-  %h2= t.questions.edit_question
+  %h2= t('simon_asks.questions.edit_question')
 
 = form_for @question do |f|
   .controls-row.big-margin.clearfix
@@ -8,4 +8,4 @@
       = f.file_field :image
       = f.hidden_field :image_cache
   .controls-row.big-margin.clearfix
-    = f.submit t.questions.edit_question, class: 'button'
+    = f.submit t('simon_asks.questions.edit_question'), class: 'button'

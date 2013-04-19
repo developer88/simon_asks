@@ -1,0 +1,8 @@
+var answer = "#answer-<%= @answer.id %> ";
+var comment = ".comment-item#<%= @comment.id %>";
+$(answer + '.answer-comments-list').prepend("<%= j render(partial: 'comment', locals: {comment: @comment, answer: @answer}) %>");
+$(answer + '.add_answer_comment.loader').hide();
+$(answer + '.answer-comment-textarea').val('');
+
+SimonAsks.prepareCommentsLinks(comment);
+//SimonAsks.prepareHints(comment);

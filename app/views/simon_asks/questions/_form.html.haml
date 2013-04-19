@@ -1,80 +1,33 @@
-= form_for @question do |f|
+= form_for @question, html: {class: 'baseform qa'} do |f|
+  
+  - if @question.errors.any? 
+    .flash-wrapper
+      .flash.error
+        = t 'errors.template.header', model: t('.clinic'), count: @question.errors.count
 
-  = label @question, Question.human_attribute_name(:title)
-  %span{class: 'asterisk'} *
-  .controls-row.big-margin.clearfix
-    - klass = @question.errors[:title].blank? ? 'silver' : 'pink'
-    %div{ class: "btn-wrap #{klass}" }
-      = f.text_field :title, class: 'text-input'
-    - unless @question.errors[:title].blank?
-      .controls-descr
-        = @question.errors[:title].first
+  = f.label :title
+  .field= f.text_field :title, class: 'text-input'
 
-  = label @question, Question.human_attribute_name(:content)
-  %span{class: 'asterisk'} *
-  .controls-row.big-margin.clearfix
-    - klass = @question.errors[:content].blank? ? 'silver' : 'pink'
-    %div{ class: "btn-wrap #{klass}" }
-      = f.text_area :content
-      .form-hint= t.questions.new_answer_hint
-    - unless @question.errors[:content].blank?
-      .controls-descr
-        = @question.errors[:content].first
+  = f.label :content
+  .field= f.text_area :content
 
 
-  = label @question, Question.human_attribute_name(:tag_list)
-  %span{class: 'asterisk'} *
-  .controls-row.big-margin.clearfix
-    - klass = @question.errors[:tag_list].blank? ? 'silver' : 'pink'
-    %div{ class: "btn-wrap #{klass}" }
-      .check.nowrap.green
-        =# f.check_box :tag_list, {}, "политика", "политика"
-        = check_box_tag "question[tag_list][]", t('question.tags.politics_value'), @question.tag_list.include?(t('question.tags.politics_value')), id: "question_tag_list_politics"
-        = t('question.tags.politics')
-      %br
-      .check.nowrap.green
-        = check_box_tag "question[tag_list][]", t('question.tags.history_value'), @question.tag_list.include?(t('question.tags.history_value')), id: "question_tag_list_history"
-        = t('question.tags.history')
-      %br
-      .check.nowrap.green
-        = check_box_tag "question[tag_list][]", t('question.tags.life_value'), @question.tag_list.include?(t('question.tags.life_value')), id: "question_tag_list_life"
-        = t('question.tags.life')
-      %br
+  = f.label :tag_list
+  = f.text_field :tag_list, class: 'text-input', "data-pre" => f.object.tag_list.sort.collect {|t| {id: t, name: t } }.to_json
 
-      .check.nowrap.green
-        = check_box_tag "question[tag_list][]", t('question.tags.culture_value'), @question.tag_list.include?(t('question.tags.culture_value')), id: "question_tag_list_culture"
-        = t('question.tags.culture')
-      %br
-      .check.nowrap.green
-        = check_box_tag "question[tag_list][]", t('question.tags.religion_value'), @question.tag_list.include?(t('question.tags.religion_value')), id: "question_tag_list_religion"
-        = t('question.tags.religion')
-      %br
-      .check.nowrap.green
-        = check_box_tag "question[tag_list][]", t('question.tags.meal_value'), @question.tag_list.include?(t('question.tags.meal_value')), id: "question_tag_list_meal"
-        = t('question.tags.meal')
-      %br
+  .vspace
+  = f.submit t('simon_asks.questions.ask'), class: 'btn'
 
-      =# f.text_field :tag_list, class: 'text-input', "data-pre" => f.object.tag_list.sort.collect {|t| {id: t, name: t } }.to_json
-    - unless @question.errors[:tag_list].blank?
-      .controls-descr
-        = @question.errors[:tag_list].first
-
-
-  .controls-row.big-margin.clearfix
-    = f.submit t.questions.ask, class: 'button'
-
-=# stylesheet_link_tag "token-input-facebook"
-=# javascript_include_tag "jquery.tokeninput"
 :javascript
-  /*$(function() {
-    $("#question_tag_list").tokenInput("/tags.json", {
+  $(function() {
+    $("#question_tag_list").tokenInput("/tags.json?model=SimonAsks::Question", {
       crossDomain: false,
       preventDuplicates: true,
-      noResultsText: "#{t.search.tags.noresults}",
-      hintText: "#{t.search.tags.hint}",
-      searchingText: "#{t.search.tags.process}",
+      noResultsText: "#{t('search.tags.noresults')}",
+      hintText: "#{t('search.tags.hint_qa')}",
+      searchingText: "#{t('search.tags.process')}",
       animateDropdown: false,
       allowCustomEntry: true,
       theme: "facebook"
     });
-  });*/
+  });

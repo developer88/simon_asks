@@ -1,7 +1,33 @@
-- if @question_of_day
-  = render 'questions/marked', question: @question_of_day
-.questions
-  - @questions.each do |question|
-    = render 'item', { question: question }
-.pagenavi
-  = paginate @questions
+#top_navigation
+  .nav
+    .location-title.fleft= show_proper_page_title
+
+    .fleft.styled
+      .field
+        = label_tag t("search.sort.name")
+        %ul.filters
+          %li
+            = filter_link_to 'rating', params
+            = filter_arrow 'rating', params
+          %li
+            = filter_link_to 'date', params
+            = filter_arrow 'date', params
+          %li
+            = filter_link_to 'views', params
+            = filter_arrow 'views', params
+
+    = render 'layouts/top_pagination', { collection: @questions, window: 5, outer_window: 2 }
+
+- # Sidebar
+- ##############
+.search-bar= render 'simon_asks/questions/sidebar'
+
+- # Right area
+- ##############
+.med-page-content
+  .questions
+    - @questions.each do |question|
+      = render 'simon_asks/questions/item', { question: question }
+
+#bottom_navigation
+  = render 'layouts/bottom_pagination', { collection: @questions, collection_size: @questions_size }

@@ -1,10 +1,10 @@
 .forum-news
-  %h3= t.questions.related_questions
+  %h3= t('simon_asks.questions.related_questions')
   .items
     - questions.each do |question|
       .item{ :class => cycle('', 'gray') }
         = link_to question.title, question
         .params
-          = link_to question.user.login, question.user if question.user
+          = link_to show_user_name(question.user), account_profile_path(question.user) if question.user
           от
-          = l question.created_at, :full
+          = l question.created_at

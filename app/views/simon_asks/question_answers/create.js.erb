@@ -1,0 +1,7 @@
+var context = ".answer#<%= @answer.id %>"
+$('#answers-list').append("<%= j render(partial: 'answer', locals: {answer: @answer}) %>");
+$('.answers > .answer-header > h3').html("<%= t('simon_asks.questions.answers_with_num', count: @answer.question.answers_count + 1) %>");
+$('#add_answer.loader').hide();
+
+SimonAsks.prepareCommentsLinks(context);
+SimonAsks.prepareHints(context);

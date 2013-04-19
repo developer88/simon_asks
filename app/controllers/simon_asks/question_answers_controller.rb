@@ -51,6 +51,7 @@ module SimonAsks
       else
         @error = 1
       end
+      Opinion.calc_stat(@answer.user.userable.id) if @answer.user.medic?
     end
 
     def downvote
@@ -64,6 +65,7 @@ module SimonAsks
       else
         @error = 1
       end
+      Opinion.calc_stat(@answer.user.userable.id) if @answer.user.medic?
     end
 
     def accept

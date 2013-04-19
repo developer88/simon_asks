@@ -1,0 +1,20 @@
+- answers.each do |answer|
+  .answer{ :id => answer.id }
+    %table
+      %tr
+        %td.votecell= render 'question_answers/vote', answer: answer
+        %td.postcell
+          .text= answer.content_html
+          .meta
+            .lf
+              - if can? :update, answer
+                = link_to t('simon_asks.answers.edit'), edit_question_answer_path(answer.question, answer)
+            .rf
+              .date= l answer.created_at, :full
+              .author= link_to show_user_name(answer.user), account_profile_path(answer.user)
+    .comments
+      .comments-list= render partial: 'answer_comments/list', locals: { answer: answer }
+      - if user_signed_in?
+        = link_to t('simon_asks.questions.write_comment'), ".answer##{answer.id} .write-comment", 'data-comment-show' => "toggle"
+        .write-comment{ style: 'display:none;' }
+          .new-comment= render partial: 'answer_comments/form', locals: { answer: answer }
