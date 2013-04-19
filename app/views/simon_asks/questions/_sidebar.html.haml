@@ -1,0 +1,21 @@
+.ask-question= link_to t('simon_asks.questions.ask'), user_signed_in? ? simon_asks.new_question_path : session_path(devise_resource_name), class: 'btn'
+
+= form_tag(simon_asks.questions_search_path, class: "baseform searchbar") do
+  .search-header= t("search.parameters")
+
+  = hidden_field_tag :qa_search, 1
+
+  = render 'layouts/shared_query_and_pages_filter'
+
+  .field
+    = label_tag :tags, t("search.filter.by_qa_tags")
+    .tags
+      = render_widget :ac_tags, :tags, collection: @qa_tags, model: 'SimonAsks::Question', data_input: { name: "question_tags_ids[]", id: "question_tags_ids" }  
+
+  %div
+    .fright
+      .search-button
+        %div
+          %div
+            = submit_tag t('find'), class: 'search-bt'
+  .spacer

@@ -5,16 +5,16 @@
       .votes
         %span.vote-count
           %strong= question.score
-        .viewcount= t.questions.votes(question.score)
+        .viewcount= t('simon_asks.questions.voutes', count: question.score)
       .answers
         %span.answer-count
           %strong= number_of_answers(question)
-        .viewcount= t.questions.answers(question.answers_count)
+        .viewcount= t('simon_asks.questions.answers', count: question.answers_count)
   .summary
     %h3= link_to question.title, question
     %p= truncate(question.content, length: 300)
     .meta
-      .views= t.questions.views(question.views_count)
-      .tags= t('questions.tags') + ': ' + show_tag_list(question)
-      .author= link_to question.user.login, question.user
-      .date= l question.updated_at, :full
+      .views= t('simon_asks.questions.views', count: question.views_count)
+      .tags= t('simon_asks.questions.tags') + ': ' + show_tag_list(question)
+      .author= = link_to show_user_name(question.user), account_profile_path(question.user)
+      .date= l question.updated_at

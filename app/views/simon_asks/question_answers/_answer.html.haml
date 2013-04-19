@@ -1,0 +1,35 @@
+.answer-item{ id: answer.id, class: (answer.score < 0 ? "minus" : "") }
+  .head
+    %ul
+      %li.votes= render 'simon_asks/question_answers/vote', answer: answer
+      %li.accept
+        - if current_user && patient? && answer.question.user_id == current_user.id  && can?(:accept, answer)
+          = link_to simon_asks.question_answer_accept_path(answer.question, answer), remote: true, class: "accept_link #{answer.accepted ? 'accepted' : ''}" do
+            %span.cycle
+              .check
+            %span.note.before= t('simon_asks.question_answers.accept')
+            %span.note.after= t('simon_asks.question_answers.accepted')
+      %li.date= answer.created_at.strftime("%-d %B %Y")
+  .body
+    .text= answer.content_html
+  .bottom
+    - if user_signed_in?
+      = link_to t('simon_asks.questions.write_comment'), "#answer-#{answer.id} .write-comment", 'data-comment-show' => "toggle", class: 'comment'
+    - if can? :update, answer
+      = link_to t('simon_asks.question_answers.edit'), edit_question_answer_path(answer.question, answer), class: 'edit'
+    - if can? :destroy, answer
+      = link_to t('simon_asks.questions.admin.delete'), question_answer_path(answer.question, answer), :method => :delete, :confirm => "Вы уверены?", class: 'delete'
+    .author
+      .avatar
+        = link_to account_profile_path(answer.user) do
+          = image_tag user_avatar_url(answer.user)
+      .name= link_to show_user_name(answer.user), account_profile_path(answer.user)
+
+.comments.answer-comments{ id: "answer-#{answer.id}" }
+  - if user_signed_in?
+    .add_answer_comment.loader.hidden
+      = image_tag 'ajax-loader.gif'
+    .add_answer_comment_block.write-comment{ style: 'display:none;' }
+      .new-comment= render partial: 'simon_asks/answer_comments/form', locals: { answer: answer }
+  .answer-comments-list.comments-list
+    = render partial: 'simon_asks/answer_comments/comment', collection: answer.comments, locals: { answer: answer }

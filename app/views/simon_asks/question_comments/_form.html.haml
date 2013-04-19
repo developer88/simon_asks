@@ -1,10 +1,7 @@
-= form_for [question, Comment.new], remote: true do |f|
-  .controls-row.big-margin.clearfix
-    .btn-wrap.silver.subject
-      .hint= f.label :content
-      = f.text_area :content, id: "question-comment-textarea"
-  .controls-row.big-margin.clearfix
-    = f.submit t.questions.write_comment, class: 'button', id: 'question-comment-submit'
+= form_for [question, SimonAsks::Comment.new], remote: true, html: {class: 'baseform'} do |f|
+  .field
+    = f.text_area :content, id: "question-comment-textarea", rows: '2'
+  = f.submit t('simon_asks.questions.write_comment'), class: 'btn btn-green btn-small', id: 'question-comment-submit'
 
 :javascript
   $('#question-comment-submit').click(function() {

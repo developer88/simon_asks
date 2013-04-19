@@ -1,19 +1,56 @@
-.question-item
-  .stats-wrapper
-    .stats
-      .votes
-        %span.vote-count
-          %strong= question.score
-        .viewcount= t.questions.votes(question.score.abs)
-      .answers
-        %span.answer-count
-          %strong= number_of_answers(question)
-        .viewcount= t.questions.answers(question.answers_count)
-  .summary
-    %h3= link_to question.title, question
-    %p= truncate(question.content, length: 300)
-    .meta
-      .views= t.questions.views(question.views_count)
-      .tags= t('questions.tags') + ': ' + show_tag_list(question)
-      .author= link_to question.user.login, question.user
-      .date= l question.updated_at, :full
+- full ||= false
+.question-item{ class: (full ? "full": "small")}
+  .head
+    .pointer
+    %ul
+      %li.votes
+        - if full
+          = render 'simon_asks/questions/vote', { question: question }
+        - else
+          .counter= question.score
+          .label= t('simon_asks.questions.votes', count: question.score.abs)
+          .pic
+      %li.answers
+        .counter= number_of_answers(question)
+        .label
+          = t('simon_asks.questions.answers', count: question.answers_count)
+          .pic
+      %li.views
+        .counter= question.views_count
+        .label
+          = t('simon_asks.questions.views_simple')
+          .pic
+      %li.date= question.updated_at.strftime("%-d %B %Y")
+  .body
+    %h2.title= link_to question.title, simon_asks.question_path(question)
+    .tags
+      - question.tag_list.each do |tag|
+        %span.tag
+          = link_to tag, simon_asks.questions_tag_path(tag)
+    .text
+      - if full
+        = @question.content_html
+      - else
+        = truncate(question.content, length: 180)
+  .bottom
+    - if full
+      - if user_signed_in?
+        = link_to t('simon_asks.questions.write_comment'), ".question-comments .write-comment", 'data-comment-show' => "toggle", class: 'comment'
+      - if can? :update, question
+        = link_to t('simon_asks.questions.edit'), edit_question_path(@question), class: 'edit'
+    .author
+      .avatar
+        = link_to account_profile_path(question.user) do
+          = image_tag user_avatar_url(question.user, true)
+      .name= link_to show_user_name(question.user), account_profile_path(question.user)
+
+- if full
+  -# Comments
+  .comments.question-comments
+    - if user_signed_in?
+      #add_question_comment.loader.hidden
+        = image_tag 'ajax-loader.gif'
+      #add_question_comment_block.write-comment{ style: 'display:none;' }
+        .new-comment= render partial: 'simon_asks/question_comments/form', locals: { question: question }
+    #question-comments-list.comments-list
+      = render partial: 'simon_asks/question_comments/comment', collection: question.comments, locals: { question: question }

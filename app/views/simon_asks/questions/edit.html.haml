@@ -1,1 +1,10 @@
+- # Navigation
+- ##############
+.nav
+  .location-title.fleft{ style: 'width: 400px; '}
+    = link_to t('questions.show.all_questions'), questions_path
+    %span= "> #{t('simon_asks.questions.edit_question')}"
+
+- # Form
+- ##############    
 = render 'form'

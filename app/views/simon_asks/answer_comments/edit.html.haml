@@ -1,7 +1,7 @@
 .content.title-row
   %h2= t('simon_asks.questions.edit_comment')
 
-= form_for [@question, @comment] do |f|
+= form_for @comment, url: question_answer_comment_path(@question, @answer, @comment) do |f|
   .controls-row.big-margin.clearfix
     .btn-wrap.silver.subject
       .hint= f.label :content

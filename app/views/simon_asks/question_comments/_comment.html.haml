@@ -1,8 +1,8 @@
 .comment-item{ id: comment.id }
   = comment.content
   = "-"
-  %span.author= link_to comment.user.login, comment.user
-  %span.date= l comment.created_at, :full
+  %span.author= link_to show_user_name(comment.user), account_profile_path(comment.user)
+  %span.date= distance_of_time_in_words_to_now(comment.created_at)
   .meta
     - if can? :destroy, comment
-      = link_to t.questions.delete, question_comment_path(question, comment), method: :delete, remote: true, class: "killcomment"
+      = link_to t('simon_asks.questions.delete'), question_comment_path(question, comment), method: :delete, remote: true, class: "killcomment"

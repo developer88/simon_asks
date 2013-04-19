@@ -1,6 +1,6 @@
 .question-marked
-  %h2= t.questions.question_of_the_day
-  - unless question.image.blank?
-    = render 'questions/item_with_image', question: question
+  %h2= t('simon_asks.questions.question_of_the_day')
+  - unless question.image && question.image.blank?
+    = render 'simon_asks/questions/item_with_image', question: question
   - else
-    = render 'questions/item', question: question
+    = render 'simon_asks/questions/item', question: question

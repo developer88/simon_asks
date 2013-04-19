@@ -1,57 +1,36 @@
-.question
-  .question-header
-    %h1= @question.title
-  .mainbar
-    .question-wrapper
-      %table
-        %tr
-          %td.votecell
-            = render partial: 'questions/vote', locals: {question: @question}
-          %td.postcell
-            .text= @question.content_html
-            .meta
-              .lf
-                .tags
-                  = t.questions.tags + ': '
-                  = show_tag_list(@question)
-                - if can? :update, @question
-                  = link_to t.questions.edit, edit_question_path(@question)
-              .rf
-                .date= l @question.updated_at, :full
-                .author
-                  = link_to image_tag(user_avatar_url(@question.user, 'icon_30')), @question.user, title: user_name(@question.user)
-                  = link_to @question.user.login, @question.user
-      -# Comments
-      .comments
-        #question-comments-list.comments-list
-          = render partial: 'question_comments/comment', collection: @question.comments, locals: { question: @question }
+- # Navigation
+- ##############
+.nav
+  .location-title.fleft{ style: 'width: 400px; '}
+    = link_to t('questions.show.all_questions'), questions_path
+    %span= "> #{@question.title}"
 
-        - if user_signed_in?
-          = link_to t.questions.write_comment, ".question-wrapper .write-comment", 'data-comment-show' => "toggle"
-          #add_question_comment.loader= image_tag 'ajax-loader.gif'
-          #add_question_comment_block.write-comment{ style: 'display:none;' }
-            .new-comment= render partial: 'question_comments/form', locals: { question: @question }
+- # Sidebar
+- ##############
+.search-bar
+  = render 'simon_asks/questions/sidebar'
+  - if @related_questions.size > 0
+    = render 'simon_asks/questions/similar_questions'
 
-    -# Answers
-    .answers
-      .answer-header
-        %h3= t.questions.answers_with_num(@question.answers_count)
-      #answers-list
-        = render partial: 'question_answers/answer', collection: @question.answers
+- # Right area
+- ##############
+.med-page-content
+  .question
+    = render 'simon_asks/questions/item', { question: @question, full: true }
 
-      - if current_user and not @question.has_answer_by?(current_user)
-        #add_answer.loader= image_tag 'ajax-loader.gif'
-        #add_answer_block.new-answer
-          %h3= t.questions.your_answer
-          = render partial: 'question_answers/form', locals: { answer: @answer, question: @question }
-  .sidebar
-    -# Admin block
-    - if current_user && current_user.is?(:admin)
-      = render 'questions/admin', question: @question
-    - if @related_questions.any?
-      = render 'questions/related', questions: @related_questions
+  -# Answers
+  .answers
+    #answers-list
+      = render partial: 'simon_asks/question_answers/answer', collection: SimonAsks::QuestionAnswer.unscoped.where(:question_id => @question.id).order('accepted desc')
+
+    - if current_user and not @question.has_answer_by?(current_user)
+      #add_answer.loader.hidden
+        = image_tag 'ajax-loader.gif'
+      #add_answer_block.new-answer
+        %h3= t('simon_asks.questions.your_answer')
+        = render partial: 'simon_asks/question_answers/form', locals: { answer: @answer, question: @question }
 
 :javascript
-  App.preload([
+  SimonAsks.preload([
     '#{asset_path('ajax-loader-mini.gif')}'
   ]);

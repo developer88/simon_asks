@@ -4,14 +4,14 @@ module SimonAsks
   class Question < ActiveRecord::Base
 
     include PgSearch
+    include Mdfile::TagsHelper
 
     paginates_per 7
 
     pg_search_scope :search_by_title_and_content, against: [:title, :content], using: { tsearch: { prefix: true} }
-    pg_search_scope :search_accociated_by_title_and_content, against: [:title, :content], :associated_against => {
-      :question_answer => :content
-    }
-
+    pg_search_scope :search_accociated_by_title_and_content, against: [:title, :content],  :associated_against => {
+      :answers => :content
+    }, using: { tsearch: { prefix: true} }
 
     belongs_to :user, :class_name => SimonAsks.user_class
     has_many :answers, class_name: 'QuestionAnswer', dependent: :destroy
@@ -29,7 +29,7 @@ module SimonAsks
     validates :image, file_size: { maximum: 2.megabytes.to_i },
       if: lambda { |o| o.image_cache.blank? }
     validates_presence_of :title, :content, :tag_list
-    #:user,
+    validate :size_of_tags
 
     default_scope includes([answers: :comments], :comments, :user).order('created_at DESC')
 
@@ -60,13 +60,36 @@ module SimonAsks
     end
 
     def self.search(params)
-      params = {query: ''} if params.nil?
-      search_accociated_by_title_and_content(params[:query])
+      return [] if params.nil?
+      result = self.scoped
+      result = result.by_tags(params[:question_tags_ids]) if params[:question_tags_ids].present?      
+      result = result.search_accociated_by_title_and_content(params[:query]) if params[:query] && params[:query].length > 1
+      result
+    end
+
+    def self.sort(type, direction = 'DESC')
+      if type == 'popular' || type == 'rating'
+        self.unscoped.order("cached_votes_score #{direction}")
+      elsif type == 'readable' || type == 'views'
+        self.unscoped.order("views_count #{direction}")
+      elsif type == 'new' || type == 'date'
+        self.unscoped.order("created_at #{direction}")
+      else
+        self.unscoped
+      end  
     end
 
     # incements views_counter by one
     def increment_views!
       increment!('views_count')
+    end
+
+    def safely_increment_views! session_array
+      unless session_array[:views]["question_#{self.id}".to_sym]
+        self.increment_views!
+        return true
+      end
+      false
     end
 
     # Mark question as a question of the day
@@ -96,5 +119,10 @@ module SimonAsks
     def clear_files
       FileUtils.rm_rf(File.dirname(self.image.current_path)) unless image.current_path.nil?
     end
+
+    def size_of_tags
+      errors.add(:tag_list, I18n.t('activerecord.errors.messages.tags.maximum_five')) if tag_list.size > 5
+    end
+
   end
 end

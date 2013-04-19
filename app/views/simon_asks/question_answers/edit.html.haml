@@ -1,0 +1,23 @@
+- # Navigation
+- ##############
+.nav
+  .location-title.fleft{ style: 'width: 400px; '}
+    = link_to t('questions.show.all_questions'), questions_path
+    %span= "> #{t('simon_asks.question_answers.edit_full')}"
+
+-#.content.title-row
+  -#%h2= t('simon_asks.question_answers.edit_full')
+
+.clearfix
+= form_for @answer, html: {class: 'baseform'} do |f|
+  
+  - if @answer.errors.any? 
+    .flash-wrapper
+      .flash.error
+        = t 'errors.template.header', model: t('.clinic'), count: @answer.errors.count
+
+  = f.label :content
+  .field= f.text_area :content
+
+  .vspace
+  = f.submit t('simon_asks.question_answers.edit'), class: 'btn'
