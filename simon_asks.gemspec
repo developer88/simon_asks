@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
   s.add_dependency "haml", "~> 3.1.8"
   s.add_dependency "haml-rails", "~> 0.4"
   s.add_dependency "coffee-rails", "~> 3.2.2"
+  s.add_dependency "twitter-bootstrap-rails", "~> 2.2.6"
 
   s.add_dependency "activeadmin", "~> 0.5.1"
 
