@@ -41,6 +41,12 @@ module SimonAsks
       simple_format
     end
 
+    def self.cache_count
+      Rails.cache.fetch("simon_asks_questions_count", expires_in: 30.minutes) {
+        count
+      }
+    end
+
     def self.cached_latest
       Rails.cache.fetch("latest_questions", :expires_in => 10.minutes) {
         where(marked: false).limit(6)
