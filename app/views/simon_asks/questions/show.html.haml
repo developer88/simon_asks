@@ -3,7 +3,7 @@
 .nav
   .location-title.fleft{ style: 'width: 400px; '}
     = link_to t('questions.show.all_questions'), questions_path
-    %span= "> #{@question.title}"
+    %span= "> #{truncate(@question.title, length: 30)}"
 
 - # Sidebar
 - ##############

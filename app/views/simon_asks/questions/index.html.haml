@@ -26,8 +26,15 @@
 - ##############
 .med-page-content
   .questions
-    - @questions.each do |question|
-      = render 'simon_asks/questions/item', { question: question }
+  
+    - if @questions.size > 0
+
+      - @questions.each do |question|
+        = render 'simon_asks/questions/item', { question: question }
+
+    - else
+
+      = t('search.nothing_found')
 
 #bottom_navigation
   = render 'layouts/bottom_pagination', { collection: @questions, collection_size: @questions_size }
