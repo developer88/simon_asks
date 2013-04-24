@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "devise", "~> 2.2.3"
   s.add_dependency "cancan", "~> 1.6.7"
 
-  s.add_dependency "acts-as-taggable-on", "~> 2.3.3"
+  s.add_dependency "acts-as-taggable-on", "=> 2.3.3"
   s.add_dependency "acts_as_votable", "~> 0.5.0"
   s.add_dependency "awesome_nested_set", "~> 2.1.5"
 
