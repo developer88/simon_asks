@@ -30,13 +30,13 @@ Gem::Specification.new do |s|
   s.add_dependency "mini_magick", "~> 3.5.0"
 
   s.add_dependency "auto_html", "~> 1.6.0"
-  s.add_dependency "kaminari", "~> 0.14.1"
+  #s.add_dependency "kaminari", "~> 0.14.1"
   s.add_dependency "haml", "~> 3.1.8"
   s.add_dependency "haml-rails", "~> 0.4"
   s.add_dependency "coffee-rails", "~> 3.2.2"
   s.add_dependency "twitter-bootstrap-rails", "~> 2.2.6"
 
-  s.add_dependency "activeadmin", "~> 0.5.1"
+  #s.add_dependency "activeadmin", "~> 0.5.1"
 
   s.add_dependency "pg", "~> 0.14.1"
   s.add_dependency "pg_search", "~> 0.5.7"
@@ -47,4 +47,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "yard", "~> 0.8.6.1"
   s.add_development_dependency "factory_girl", "~> 4.2.0"
   s.add_development_dependency "shoulda", "~> 3.4.0"
+  s.add_development_dependency "kaminari", "~> 0.14.1"
+  s.add_development_dependency "rspec-mocks", "~> 2.13.1"
 end
