@@ -46,4 +46,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec-rails", "~> 2.13.1"
   s.add_development_dependency "yard", "~> 0.8.6.1"
   s.add_development_dependency "factory_girl", "~> 4.2.0"
+  s.add_development_dependency "shoulda", "~> 3.4.0"
 end

@@ -1,6 +1,6 @@
 # include necessary helpers
-require 'mdfile/active_admin/custom_resources_helper'
-::ActiveAdmin::DSL.send(:include, Mdfile::ActiveAdmin::CustomResourcesHelper)
+#require 'mdfile/active_admin/custom_resources_helper'
+#::ActiveAdmin::DSL.send(:include, Mdfile::ActiveAdmin::CustomResourcesHelper)
 
 if ActiveRecord::Base.connection.table_exists? 'simon_asks_questions'
   ActiveAdmin.register SimonAsks::Question do  

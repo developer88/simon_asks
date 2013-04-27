@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409084506) do
+ActiveRecord::Schema.define(:version => 20130427201635) do
 
   create_table "simon_asks_comments", :force => true do |t|
     t.integer  "owner_id"
@@ -36,21 +36,44 @@ ActiveRecord::Schema.define(:version => 20130409084506) do
     t.integer  "question_id"
     t.integer  "comments_count"
     t.integer  "cached_votes_score", :default => 0
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.boolean  "accepted",           :default => false
   end
+
+  add_index "simon_asks_question_answers", ["cached_votes_score"], :name => "index_simon_asks_question_answers_on_cached_votes_score"
 
   create_table "simon_asks_questions", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.boolean  "marked",         :default => false
-    t.integer  "answers_count",  :default => 0
-    t.integer  "comments_count", :default => 0
-    t.integer  "views_count",    :default => 0
+    t.boolean  "marked",             :default => false
+    t.integer  "answers_count",      :default => 0
+    t.integer  "comments_count",     :default => 0
+    t.integer  "views_count",        :default => 0
     t.string   "image"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+    t.integer  "cached_votes_score", :default => 0
+  end
+
+  add_index "simon_asks_questions", ["cached_votes_score"], :name => "index_simon_asks_questions_on_cached_votes_score"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       :limit => 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|

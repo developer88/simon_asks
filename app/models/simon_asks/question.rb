@@ -13,7 +13,7 @@ module SimonAsks
       :answers => :content
     }, using: { tsearch: { prefix: true} }
 
-    belongs_to :user, :class_name => SimonAsks.user_class
+    belongs_to :user, :class_name => SimonAsks.user_class, dependent: :destroy
     has_many :answers, class_name: 'QuestionAnswer', dependent: :destroy
     has_many :comments, as: 'owner', dependent: :destroy
 
@@ -24,7 +24,7 @@ module SimonAsks
     attr_accessible :title, :content, :user, :tag_list, :image, :image_cache,
       :remove_image
 
-    after_destroy :clear_files
+   # after_destroy :clear_files
 
     #validates :image, file_size: { maximum: 2.megabytes.to_i },
     #  if: lambda { |o| o.image_cache.blank? }
@@ -122,9 +122,9 @@ module SimonAsks
 
     private
 
-    def clear_files
-      FileUtils.rm_rf(File.dirname(self.image.current_path)) unless image.current_path.nil?
-    end
+    #def clear_files
+      #FileUtils.rm_rf(File.dirname(self.image.current_path)) unless image.current_path.nil?
+   # end
 
     def size_of_tags
       errors.add(:tag_list, I18n.t('activerecord.errors.messages.tags.maximum_five')) if tag_list.size > 5
