@@ -3,6 +3,8 @@ simon-ask
 
 [Working in progress]
 
+![Travis-ci](https://travis-ci.org/developer88/simon_asks.png)
+
 Q&amp;A Gem for Rails inspired by [Stackoverflow](http://stackoverflow.com).
 
 
