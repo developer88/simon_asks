@@ -4,7 +4,7 @@ module SimonAsks
   class Question < ActiveRecord::Base
 
     include PgSearch
-    include Mdfile::TagsHelper
+    #include Mdfile::TagsHelper
 
     paginates_per 7
 
@@ -17,7 +17,7 @@ module SimonAsks
     has_many :answers, class_name: 'QuestionAnswer', dependent: :destroy
     has_many :comments, as: 'owner', dependent: :destroy
 
-    mount_uploader :image, QuestionUploader
+   # mount_uploader :image, QuestionUploader
     acts_as_taggable
     acts_as_votable
 
@@ -26,8 +26,8 @@ module SimonAsks
 
     after_destroy :clear_files
 
-    validates :image, file_size: { maximum: 2.megabytes.to_i },
-      if: lambda { |o| o.image_cache.blank? }
+    #validates :image, file_size: { maximum: 2.megabytes.to_i },
+    #  if: lambda { |o| o.image_cache.blank? }
     validates_presence_of :title, :content, :tag_list
     validate :size_of_tags
 

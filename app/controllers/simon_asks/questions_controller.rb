@@ -12,9 +12,9 @@ module SimonAsks
     before_filter :load_qa_tags
     before_filter :set_params
 
-    has_widgets do |root|
-      root << widget(:ac_tags)
-    end    
+    #has_widgets do |root|
+    #  root << widget(:ac_tags)
+    #end    
 
     def index
       # TODO add option to enable this

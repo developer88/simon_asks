@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "devise", "~> 2.2.3"
   s.add_dependency "cancan", "~> 1.6.7"
 
-  s.add_dependency "acts-as-taggable-on", "> 2.3"
+  s.add_dependency "acts-as-taggable-on", "~> 2.4"
   s.add_dependency "acts_as_votable", "~> 0.5.0"
   s.add_dependency "awesome_nested_set", "~> 2.1.5"
 
@@ -43,4 +43,7 @@ Gem::Specification.new do |s|
   
   # development
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails", "~> 2.13.1"
+  s.add_development_dependency "yard", "~> 0.8.6.1"
+  s.add_development_dependency "factory_girl", "~> 4.2.0"
 end
