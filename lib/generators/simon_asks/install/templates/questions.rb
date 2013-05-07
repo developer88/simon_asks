@@ -1,20 +1,7 @@
-# include necessary helpers
-#require 'mdfile/active_admin/custom_resources_helper'
-#::ActiveAdmin::DSL.send(:include, Mdfile::ActiveAdmin::CustomResourcesHelper)
-
 if ActiveRecord::Base.connection.table_exists? 'simon_asks_questions'
   ActiveAdmin.register SimonAsks::Question do  
 
     setup_resource object: SimonAsks::Question, menu: :qa
-
-    #  TODO Do we need this?
-   # batch_action :mark do |selection|
-    #  SimonAsks::Question.find(selection).each do |question|
-    #    question.unmark! if question.marked
-    #    question.mark! unless question.marked
-    #  end
-    #  redirect_to collection_path, :notice => I18n.t('active_admin.batch_actions.notices.mark')
-    #end
 
     controller do
 
@@ -31,9 +18,7 @@ if ActiveRecord::Base.connection.table_exists? 'simon_asks_questions'
     end 
 
     filter :created_at
-    filter :title
-    filter :content 
-    #filter :marked
+    filter :title 
 
     index do
       resource_object = controller.resource_class
@@ -46,10 +31,7 @@ if ActiveRecord::Base.connection.table_exists? 'simon_asks_questions'
       end  
       column resource_object.human_attribute_name(:user) do |obj|
         mail_to obj.user.email if obj.user
-      end   
-      #column resource_object.human_attribute_name(:marked), :sortable => :marked do |obj|
-      #  t("simon_asks.question.marked.#{obj.marked.to_s}")
-      #end                      
+      end                     
       column I18n.t("active_admin.actions") do |obj|
        links = link_to I18n.t(:edit), edit_admin_simon_asks_question_path(obj.id)
        links += '&nbsp;&nbsp;'.html_safe
@@ -64,7 +46,6 @@ if ActiveRecord::Base.connection.table_exists? 'simon_asks_questions'
         f.input :title
         f.input :tag_list, as: :string, input_html: { class: 'tags', data: { pre: f.object.tag_list.sort.collect {|t| {id: t, name: t } } } }
         f.input :content
-        #f.input :image
       end     
       f.actions
     end  
@@ -72,17 +53,11 @@ if ActiveRecord::Base.connection.table_exists? 'simon_asks_questions'
     show do |obj|
       attributes_table do
         row :title
-        #row :marked do
-        #  t("simon_asks.question.marked.#{obj.marked.to_s}")
-        #end
         row :tag_list 
         row :user do
           mail_to obj.user.email if obj.user
         end
         row :content 
-        #row :image do
-        #  image_tag(obj.image.file.to_s) if obj.image && !obj.image.file.blank?
-        #end
         row :created_at
         row :updated_at
       end

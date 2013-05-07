@@ -1,7 +1,3 @@
-# include necessary helpers
-#require 'mdfile/active_admin/custom_resources_helper'
-#::ActiveAdmin::DSL.send(:include, Mdfile::ActiveAdmin::CustomResourcesHelper)
-
 if ActiveRecord::Base.connection.table_exists? 'simon_asks_comments'
   ActiveAdmin.register SimonAsks::Comment do  
 
