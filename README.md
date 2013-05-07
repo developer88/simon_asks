@@ -40,11 +40,12 @@ Run migrations as:
 
     $ rake db:migrate
 
-Copy views, controllers and models if you need them:
+Copy views, controllers, models and ActiveAdmin Resources if you need them:
 
     $ rails g simon_asks:views
     $ rails g simon_asks:controllers
     $ rails g simon_asks:models
+    $ rails g simon_asks:active_admin
 
 ## Usage
 
