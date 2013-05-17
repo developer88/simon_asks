@@ -85,6 +85,7 @@ en:
     questions: 
       new: New question  
       similar_questions: 'Similar questions'
+      similar_medics: 'Relevant medics'
       title: 'Questions'
       answers: 
         one: 'question'
