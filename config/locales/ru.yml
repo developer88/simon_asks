@@ -89,7 +89,7 @@ ru:
     questions:
       new: Новый вопрос
       similar_questions: 'Похожие вопросы'
-      similar_medics: 'Могут проконсультировать'
+      similar_medics: 'Специалисты в этой области'
       title: 'Вопросы'
       answers: 
         one: ответ
