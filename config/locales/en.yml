@@ -85,7 +85,7 @@ en:
     questions: 
       new: New question  
       similar_questions: 'Similar questions'
-      similar_medics: 'Can consult'
+      similar_medics: 'Specialists in this field'
       title: 'Questions'
       answers: 
         one: 'question'
