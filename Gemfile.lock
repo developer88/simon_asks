@@ -205,6 +205,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  devise
   factory_girl (~> 4.2.0)
   jquery-rails
   kaminari (~> 0.14.1)

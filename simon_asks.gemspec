@@ -43,6 +43,7 @@ Gem::Specification.new do |s|
   
   # development
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "devise"
   s.add_development_dependency "rspec-rails", "~> 2.13.1"
   s.add_development_dependency "yard", "~> 0.8.6.1"
   s.add_development_dependency "factory_girl", "~> 4.2.0"
