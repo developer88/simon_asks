@@ -3,7 +3,7 @@ simon-ask
 
 [Working in progress]
 
-## Abit of History:
+## A bit of History:
 
 I worked on some project in 2013 and at some time decided to move out some code to external module (e.g. Gem), so that is how branch v0.0.1 has been created. Next I tried to finish the gem (master branch) but the code is a crap, to tell the truth, so I will not do anything with it. You may create a fork if you like and finish it :(
 
