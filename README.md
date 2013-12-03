@@ -5,11 +5,7 @@ simon-ask
 
 ## Abit of History:
 
-I worked for the project and at some time we decided to move out some code to external module (e.g. Gem), so that is how branch v0.0.1 has been created. Next I tried to finish the gem but the code is a crap, to tell the truth. 
-
-So i will not do anything with it. You may create a fork if you like and finish it, but i won't :(
-
-
+I worked on some project in 2013 and at some time decided to move out some code to external module (e.g. Gem), so that is how branch v0.0.1 has been created. Next I tried to finish the gem (master branch) but the code is a crap, to tell the truth, so I will not do anything with it. You may create a fork if you like and finish it :(
 
 
 ![Travis-ci](https://travis-ci.org/developer88/simon_asks.png)
